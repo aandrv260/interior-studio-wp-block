@@ -134,3 +134,4 @@ class CustomBlock
 
 new CustomBlock('hero-img');
 new CustomBlock('generic-heading');
+new CustomBlock('generic-description');
