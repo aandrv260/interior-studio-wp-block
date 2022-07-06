@@ -1,0 +1,28 @@
+#main-services {
+  // @include add-main-content-bg-image('../images/services-page/background.jpg', #333, 0.05);
+
+  section {
+    background-color: transparent;
+  }
+
+  .heading--secondary {
+    font-weight: $font-weight-bold;
+  }
+
+  .card-outline {
+    padding: 1rem;
+    border: 1px solid $color-black;
+
+    &:hover {
+      //   transform: scale(1.1);
+    }
+
+    .card {
+      height: 100%;
+    }
+  }
+
+  .card {
+    background-color: $color-black;
+  }
+}

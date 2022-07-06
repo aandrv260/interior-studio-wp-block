@@ -1,0 +1,113 @@
+// $hero-gradient-color: 0.5;
+// $hero-gradient-color: 0.45;
+// $hero-gradient: rgba(0, 0, 0, $hero-gradient-color);
+
+.section--hero {
+  @include flex-column;
+  position: relative;
+  padding: 2.4rem 3rem;
+  background-color: rgba($color-black, 0.4);
+  // @include add-bg-image('../images/hero/hero-1.jpg');
+  height: 110vh;
+}
+
+.hero {
+  &__header {
+    @include flex(center, space-between, null);
+    margin-bottom: 4.8rem;
+  }
+
+  &__email-icon {
+    @include flex(center, center, null);
+  }
+
+  &__logo {
+    position: relative;
+    height: 7.6rem;
+    margin-left: 4.8rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__boxes {
+    display: flex;
+    height: 100%;
+    color: #fff;
+  }
+
+  &__box {
+    .heading--primary {
+      font-size: 4.4rem;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing-5;
+      font-weight: 500;
+      margin-top: auto;
+    }
+
+    &--1 {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      flex-basis: 45%;
+      //   background-color: rgba(140, 118, 91, 0.65);
+      background-color: rgba(115, 98, 80, 0.65);
+      padding: 0 2.4rem;
+    }
+  }
+
+  &__quote {
+    font-size: 2.2rem;
+    letter-spacing: $letter-spacing-4;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    font-weight: $font-weight-bold;
+
+    // Experimenting with putting the quote below the logo
+    color: #fff;
+    font-size: 1rem;
+    width: 50rem;
+    position: absolute;
+    top: 120%;
+    left: -70%;
+    font-weight: $font-weight-normal;
+  }
+
+  &__btn {
+    align-self: flex-start;
+    font-size: 2rem;
+    margin-bottom: auto;
+  }
+
+  &__desc {
+    font-size: 2rem;
+    margin-bottom: 2.7rem;
+    letter-spacing: 0.3px;
+    line-height: 2;
+  }
+
+  &__social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 4.8rem;
+  }
+
+  &__icon {
+    @include set-size(100%);
+
+    &:hover {
+      color: #cce;
+    }
+  }
+
+  &__icon-link {
+    @include link-normal {
+      @include set-size(2.4rem);
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.header-portfolio-img-only {
+  // height: 100vh;
+
+  // @include add-bg-image-with-height(
+  //   '/images/portfolios-project-page/microhome/header-cropped.png',
+  //   80vh,
+  //   null
+  // );
+  height: 80vh;
+  background-attachment: scroll;
+  margin-bottom: 0.5rem;
+}

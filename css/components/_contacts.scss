@@ -1,0 +1,74 @@
+.contacts {
+  @include flex(null, n, null);
+  gap: 9.8rem;
+
+  .contact-form {
+    flex: 0 0 60%;
+  }
+
+  &__contact-methods {
+  }
+
+  &__contact-info {
+    @include flex-column;
+    flex: 1;
+    gap: 1.2rem;
+
+    &:not(:last-child) {
+      margin-bottom: 4.8rem;
+    }
+  }
+
+  &__icon-link {
+    @include link-normal {
+      @include set-size(2.4rem);
+      color: #dde;
+    }
+
+    @include link-hover {
+      color: $color-main;
+    }
+  }
+
+  &__icon {
+    @include set-size(100%);
+  }
+
+  &__heading {
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    // rgba(255, 255, 255, 0.1);
+    text-shadow: -0.2rem 0.5rem 1rem rgba(222, 184, 135, 0.2);
+
+    &--large {
+      font-size: 2.8rem;
+    }
+
+    &--small {
+      font-size: 2rem;
+    }
+  }
+
+  &__contact-group {
+    @include flex(center, null, null);
+    gap: 2.4rem;
+  }
+
+  &__contact-link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      padding-bottom: 0.5px;
+      //   color: $color-main;
+      color: #ccc;
+      font-size: 2rem;
+      border-bottom: 1px solid currentColor;
+    }
+
+    &:hover,
+    &:active {
+      color: $color-main;
+      text-shadow: -0.2rem 0.5rem 1.4rem rgba(222, 184, 135, 0.3);
+    }
+  }
+}

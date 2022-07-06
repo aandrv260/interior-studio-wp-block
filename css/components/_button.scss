@@ -1,0 +1,28 @@
+.btn {
+  display: inline-block;
+  padding: 1.4rem 3.2rem;
+  font-size: 1.8rem;
+  border: none;
+  cursor: pointer;
+
+  &--full {
+    background-color: rgba(222, 184, 135, 1);
+    color: inherit;
+
+    &:hover {
+      background-color: rgba(222, 184, 135, 0.85);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #fff;
+    color: #fff;
+    font-weight: 300;
+
+    &:hover {
+      background-color: rgba(222, 184, 135, 0.85);
+    }
+  }
+}

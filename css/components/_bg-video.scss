@@ -1,0 +1,13 @@
+.bg-video {
+  @include position(absolute, 0, 0, null);
+  @include set-size(100%);
+
+  z-index: -1;
+  filter: contrast(1.6);
+  overflow: hidden;
+
+  &__content {
+    @include set-size(100%);
+    object-fit: cover;
+  }
+}

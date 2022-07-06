@@ -1,0 +1,56 @@
+body {
+  // font-family: 'Montserrat', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  // font-family: 'EuropeExt Normal', arial, sans-serif;
+  font-size: 1.6rem;
+  color: #fff;
+  font-weight: 400;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+.heading {
+  &--primary {
+    font-size: 3.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    // With gradient
+    @include text-gradient;
+    background-image: linear-gradient(
+      to right bottom,
+      rgb(235, 182, 117) 0%,
+      #b5ad9f 50%,
+      #bbe 70%
+    );
+  }
+
+  &--primary-large {
+    font-size: 6.4rem !important;
+  }
+
+  &--primary-medium {
+    font-size: 5rem !important;
+  }
+
+  &--primary-small {
+    font-size: 3.8rem !important;
+  }
+
+  &--secondary {
+    font-size: 4.8rem;
+    letter-spacing: 2.5px;
+    color: #fff;
+    text-shadow: 0.1rem 0.2rem 1.4rem rgba(222, 184, 135, 0.4);
+    // rgba(255, 255, 255, 0.3)
+  }
+}
+
+.desc {
+  font-size: 1.8rem;
+  font-weight: $font-weight-thin;
+}
+
+strong {
+  font-weight: 800;
+}

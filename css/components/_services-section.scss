@@ -1,0 +1,24 @@
+.services-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 3rem;
+}
+
+.service {
+  @include flex(center, null, column);
+  color: #fff;
+
+  &__icon-box {
+    @include flex(center, center, null);
+    background-color: #fff;
+    // border: 1px solid currentColor;
+    border-radius: 50%;
+    @include set-size(4rem);
+    margin-bottom: 1.2rem;
+  }
+
+  &__icon {
+    @include set-size(50%);
+    color: #333;
+  }
+}
