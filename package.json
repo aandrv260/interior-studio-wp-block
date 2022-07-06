@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "wp-scripts start src/index.js",
+    "start": "wp-scripts start src/index.js blocks/hero-img.js blocks/generic-heading.js",
     "dev": "wp-scripts start",
     "devFast": "wp-scripts start"
   },

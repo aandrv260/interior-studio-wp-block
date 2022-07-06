@@ -266,6 +266,15 @@ body {
   color: transparent;
   background-image: linear-gradient(to right bottom, rgb(235, 182, 117) 0%, #b5ad9f 50%, #bbe 70%);
 }
+.heading--primary-large {
+  font-size: 6.4rem !important;
+}
+.heading--primary-medium {
+  font-size: 5rem !important;
+}
+.heading--primary-small {
+  font-size: 3.8rem !important;
+}
 .heading--secondary {
   font-size: 4.8rem;
   letter-spacing: 2.5px;
@@ -1070,15 +1079,17 @@ LAYOUT
   height: 100vh;
   padding: 2.4rem 3rem;
 }
-.header-alternative .heading--primary {
-  font-size: 8rem;
-  color: #fff;
-  letter-spacing: 1.2px;
-  text-transform: capitalize;
+.header-alternative__content-box {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.header-alternative .heading--primary {
+  font-size: 5rem;
+  color: #fff;
+  letter-spacing: 1.2px;
+  text-transform: capitalize;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

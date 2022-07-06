@@ -88,6 +88,8 @@ function features()
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails'); // Allow thumbnails on the normal posts
     add_image_size('portfolio_thumbnail', 325, 505, true); // Portfolio thumbnail
+    add_theme_support('editor-styles');
+    add_editor_style(array('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet', 'build/style-index.css'));
 }
 
 add_action('after_setup_theme', 'features');
@@ -95,8 +97,40 @@ add_action('after_setup_theme', 'features');
 function insert_asset_files()
 {
     // Adding CSS styles
-    wp_enqueue_style('google_font', 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet');
-    wp_enqueue_style('main_styles', get_theme_file_uri('/public/css/app.css'));
+    wp_enqueue_style('google_font', '//fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet');
+    wp_enqueue_style('main_styles', get_theme_file_uri('/build/style-index.css'));
 }
 
 add_action('wp_enqueue_scripts', 'insert_asset_files');
+
+// function hero_img()
+// {
+//     wp_register_script('hero_img_script', get_stylesheet_directory_uri() . "/build/hero-img.js", array('wp-blocks', 'wp-editor'));
+
+//     register_block_type('custom-blocks/hero', array(
+//         'editor_script' => 'hero_img_script'
+//     ));
+// }
+
+// add_action('init', 'hero_img');
+
+class CustomBlock
+{
+    function __construct($name)
+    {
+        $this->name = $name;
+        add_action('init',  [$this, 'on_init']);
+    }
+
+    function on_init()
+    {
+        wp_register_script($this->name, get_stylesheet_directory_uri() . "/build/{$this->name}.js", array('wp-blocks', 'wp-editor'));
+
+        register_block_type("custom-blocks/{$this->name}", array(
+            'editor_script' => $this->name,
+        ));
+    }
+}
+
+new CustomBlock('hero-img');
+new CustomBlock('generic-heading');

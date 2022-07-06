@@ -25,6 +25,18 @@ body {
     );
   }
 
+  &--primary-large {
+    font-size: 6.4rem !important;
+  }
+
+  &--primary-medium {
+    font-size: 5rem !important;
+  }
+
+  &--primary-small {
+    font-size: 3.8rem !important;
+  }
+
   &--secondary {
     font-size: 4.8rem;
     letter-spacing: 2.5px;
