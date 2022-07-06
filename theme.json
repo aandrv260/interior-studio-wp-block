@@ -1,6 +1,21 @@
 {
   "version": 2,
   "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "primary",
+          "color": "#deb887",
+          "name": "Primary"
+        },
+
+        {
+          "slug": "grey",
+          "color": "#eee",
+          "name": "Grey"
+        }
+      ]
+    },
     "layout": {
       "contentSize": "800px"
     }
