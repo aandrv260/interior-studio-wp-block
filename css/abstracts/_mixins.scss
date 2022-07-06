@@ -1,0 +1,110 @@
+@mixin set-size($size) {
+  height: $size;
+  width: $size;
+}
+
+@mixin flex($align, $justify, $dir) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+
+  @if ($dir) {
+    flex-direction: $dir;
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin bg-image-settings {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@mixin add-main-content-bg-image($img, $bg-color, $gradient) {
+  @include bg-image-settings;
+  background-image: linear-gradient(rgba($bg-color, $gradient), rgba($bg-color, $gradient)),
+    url($img);
+}
+
+@mixin add-bg-image($img) {
+  @include bg-image-settings;
+  background-image: linear-gradient($hero-gradient, $hero-gradient), url($img);
+  height: 100vh;
+}
+
+@mixin add-bg-image-with-height($img, $height, $gradient-color) {
+  @include bg-image-settings;
+
+  @if $gradient-color == null {
+    background-image: url($img);
+  } @else {
+    background-image: linear-gradient($gradient-color, $gradient-color), url($img);
+  }
+
+  height: $height;
+
+  // @if $grade ;
+}
+
+@mixin position($pos, $top, $left, $right) {
+  position: $pos;
+  top: $top;
+  left: $left;
+  right: $right;
+}
+
+@mixin transform-center($pos) {
+  position: $pos;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin link-normal {
+  &:link,
+  &:visited {
+    @content;
+  }
+}
+
+@mixin link-hover {
+  &:hover,
+  &:active {
+    @content;
+  }
+}
+
+@mixin set-padding($side, $padding) {
+  @if $side == 'vert' {
+    padding: {
+      top: $padding;
+      bottom: $padding;
+    }
+  }
+
+  @if $side == 'horiz' {
+    padding: {
+      left: $padding;
+      right: $padding;
+    }
+  }
+
+  @if $side == 'full' {
+    padding: $padding;
+  }
+}
+
+/**
+2 colors
+*/
+
+@mixin text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

@@ -1,0 +1,42 @@
+// Abstracts
+
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/utilities';
+@import 'abstracts/animations.scss';
+
+/**
+BASE
+*/
+
+@import 'base/base';
+@import 'base/typography';
+
+/**
+Components
+*/
+
+@import 'components/button';
+@import 'components/hero';
+@import 'components/section-about';
+@import 'components/lang-selector';
+@import 'components/services-section';
+@import 'components/section-team';
+@import 'components/section-pricing';
+@import 'components/contacts';
+@import 'components/contact-form';
+@import 'components/bg-video';
+@import 'components/features';
+@import 'components/main-content';
+@import 'components/section-portfolio';
+@import 'components/blog-articles';
+@import 'components/portfolio-project';
+@import 'components/portfolio-images';
+
+/**
+LAYOUT
+*/
+
+@import 'layouts/main-nav';
+@import 'layouts/header-portfolio';
+@import 'layouts/header-alternative';

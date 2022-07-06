@@ -1,0 +1,106 @@
+.section--pricing {
+  padding: 6.4rem 0 8rem;
+
+  .desc,
+  .heading--secondary {
+    display: inline-block;
+    color: $color-grey-light-3;
+    background-color: rgba($color-black, 0.75);
+    padding: 1.4rem 0;
+  }
+
+  .heading--secondary {
+    @include set-padding('horiz', 3.2rem);
+    text-transform: uppercase;
+    font-weight: $font-weight-thin;
+  }
+
+  .desc {
+    font-size: 1.7rem;
+  }
+}
+
+.cards {
+  margin-bottom: 8rem;
+}
+
+.card {
+  @include flex(center, null, column);
+  border: 1px solid rgba(222, 184, 135, 0.85);
+  border-radius: 3px;
+  padding: 4.8rem 0 3.2rem;
+  box-shadow: 0 1rem 4rem rgba(222, 184, 135, 0.1);
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translateY(-2rem) scale(1.08);
+  }
+
+  &__header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  &__name {
+    display: block;
+    // font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+    font-weight: 300;
+  }
+
+  &__price-num {
+    font-size: 6.4rem;
+    margin-right: 0.3rem;
+    font-weight: 700;
+    color: rgb(222, 184, 135);
+  }
+
+  &__price-unit {
+    font-size: 2.2rem;
+    font-weight: 300;
+  }
+
+  &__body {
+    margin-bottom: 2.4rem;
+    padding: {
+      left: 1rem;
+      right: 1rem;
+    }
+  }
+
+  &__text-with-icon {
+    @include flex(center, null, null);
+  }
+
+  &__list {
+  }
+
+  &__list-item {
+    @include flex(center, null, null);
+    gap: 1.2rem;
+
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+
+    span {
+      font-size: 1.8rem;
+      line-height: 1.8;
+    }
+  }
+
+  &__icon {
+    @include set-size(4rem);
+    flex-shrink: 0;
+    color: #ebd4b7;
+
+    &--small {
+      display: inline-block;
+      transform: translate(5px, 7px);
+
+      svg {
+        @include set-size(100%);
+      }
+    }
+  }
+}

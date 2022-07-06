@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+section {
+  padding: 4.8rem 0;
+  background-color: $color-black;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 130rem;
+  margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+  width: 1.8rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ddd;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-main;
+
+  &:hover {
+    background-color: #b2936c;
+  }
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-family: inherit;
+  color: #555;
+  font-size: 1.8rem;
+  letter-spacing: 1.5px;
+}
+
+#main-services {
+  @include bg-image-settings;
+}

@@ -1,0 +1,31 @@
+.lang-selector {
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid #aab;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &__label {
+    &--lang-code {
+      &:hover {
+        color: $color-main;
+      }
+
+      &--active {
+        color: $color-main;
+
+        &:hover {
+        }
+      }
+    }
+
+    &--slash {
+      margin: 0 0.5rem;
+    }
+  }
+
+  &:hover {
+    border-color: transparent;
+  }
+}

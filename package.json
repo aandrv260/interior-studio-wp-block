@@ -1,0 +1,25 @@
+{
+  "name": "interior-studio-block-theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "wp-scripts start src/index.js",
+    "dev": "wp-scripts start",
+    "devFast": "wp-scripts start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aandrv260/interior-studio-wp-block.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aandrv260/interior-studio-wp-block/issues"
+  },
+  "homepage": "https://github.com/aandrv260/interior-studio-wp-block#readme",
+  "dependencies": {
+    "@wordpress/scripts": "^23.4.0"
+  }
+}

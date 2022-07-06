@@ -1,0 +1,15 @@
+.header-alternative {
+  //   @include flex(center, center, null);
+  // @include add-bg-image('../images/header-non-homepage//header-img.jpg');
+  @include bg-image-settings;
+  height: 100vh;
+  padding: 2.4rem 3rem;
+
+  .heading--primary {
+    font-size: 8rem;
+    color: #fff;
+    letter-spacing: 1.2px;
+    text-transform: capitalize;
+    @include transform-center(absolute);
+  }
+}
