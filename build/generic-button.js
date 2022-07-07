@@ -172,6 +172,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('custom-blocks/generic-button', {
   title: 'Generic Button',
   attributes: {
@@ -189,6 +190,12 @@ __webpack_require__.r(__webpack_exports__);
     position: {
       type: 'string',
       default: 'center'
+    },
+    link: {
+      type: 'object',
+      default: {
+        url: ''
+      }
     }
   },
   edit: EditComponent,
@@ -202,11 +209,42 @@ function EditComponent(props) {
       text,
       size,
       btnStyle,
-      position
+      position,
+      link
     }
   } = props;
+  const [isLinkPickerVisible, setIsLinkPickerVisible] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
 
-  const linkBtnClickHandler = () => {};
+  const linkBtnClickHandler = () => {
+    setIsLinkPickerVisible(prevState => !prevState);
+  };
+
+  const handleLinkChange = newLink => {
+    setAttributes({
+      link: newLink
+    });
+  };
+
+  const PopoverComp = _ref => {
+    let {
+      position
+    } = _ref;
+    return isLinkPickerVisible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Popover, {
+      onFocusOutside: () => setIsLinkPickerVisible(false),
+      position: "bottom center"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalLinkControl, {
+      settings: [],
+      value: link,
+      onChange: handleLinkChange
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+      variant: "primary",
+      onClick: () => setIsLinkPickerVisible(false),
+      style: {
+        display: 'block',
+        width: '100%'
+      }
+    }, "Confirm Link"));
+  };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
     onClick: linkBtnClickHandler,
@@ -264,6 +302,8 @@ function EditComponent(props) {
       text: typedString
     }),
     value: text
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PopoverComp, {
+    position: "center"
   })));
 }
 
@@ -274,14 +314,15 @@ function SaveComponent(props) {
       text,
       size,
       btnStyle,
-      position
+      position,
+      link
     }
   } = props;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `hero__btn-box hero__btn-box--${position}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: `btn btn--${btnStyle} btn--${size}`,
-    href: "#"
+    href: link.url
   }, text));
 }
 })();

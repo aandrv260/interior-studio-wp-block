@@ -1,7 +1,12 @@
-import { link } from '@wordpress/icons';
+import { handle, link as linkIcon } from '@wordpress/icons';
 import { registerBlockType } from '@wordpress/blocks';
-import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
-import { RichText, BlockControls } from '@wordpress/block-editor';
+import { ToolbarGroup, ToolbarButton, Popover, Button } from '@wordpress/components';
+import {
+  RichText,
+  BlockControls,
+  __experimentalLinkControl as LinkControl,
+} from '@wordpress/block-editor';
+import { useState } from '@wordpress/element';
 
 registerBlockType('custom-blocks/generic-button', {
   title: 'Generic Button',
@@ -10,6 +15,7 @@ registerBlockType('custom-blocks/generic-button', {
     size: { type: 'string', default: 'large' },
     btnStyle: { type: 'string', default: 'full' },
     position: { type: 'string', default: 'center' },
+    link: { type: 'object', default: { url: '' } },
   },
   edit: EditComponent,
   save: SaveComponent,
@@ -18,16 +24,41 @@ registerBlockType('custom-blocks/generic-button', {
 function EditComponent(props) {
   const {
     setAttributes,
-    attributes: { text, size, btnStyle, position },
+    attributes: { text, size, btnStyle, position, link },
   } = props;
 
-  const linkBtnClickHandler = () => {};
+  const [isLinkPickerVisible, setIsLinkPickerVisible] = useState(false);
+
+  const linkBtnClickHandler = () => {
+    setIsLinkPickerVisible(prevState => !prevState);
+  };
+
+  const handleLinkChange = newLink => {
+    setAttributes({ link: newLink });
+  };
+
+  const PopoverComp = ({ position }) => {
+    return (
+      isLinkPickerVisible && (
+        <Popover onFocusOutside={() => setIsLinkPickerVisible(false)} position="bottom center">
+          <LinkControl settings={[]} value={link} onChange={handleLinkChange} />
+          <Button
+            variant="primary"
+            onClick={() => setIsLinkPickerVisible(false)}
+            style={{ display: 'block', width: '100%' }}
+          >
+            Confirm Link
+          </Button>
+        </Popover>
+      )
+    );
+  };
 
   return (
     <>
       <BlockControls>
         <ToolbarGroup>
-          <ToolbarButton onClick={linkBtnClickHandler} icon={link} />
+          <ToolbarButton onClick={linkBtnClickHandler} icon={linkIcon} />
         </ToolbarGroup>
 
         <ToolbarGroup>
@@ -102,6 +133,7 @@ function EditComponent(props) {
           onChange={typedString => setAttributes({ text: typedString })}
           value={text}
         />
+        <PopoverComp position="center" />
       </div>
     </>
   );
@@ -110,12 +142,12 @@ function EditComponent(props) {
 function SaveComponent(props) {
   const {
     setAttributes,
-    attributes: { text, size, btnStyle, position },
+    attributes: { text, size, btnStyle, position, link },
   } = props;
 
   return (
     <div className={`hero__btn-box hero__btn-box--${position}`}>
-      <a className={`btn btn--${btnStyle} btn--${size}`} href="#">
+      <a className={`btn btn--${btnStyle} btn--${size}`} href={link.url}>
         {text}
       </a>
     </div>
