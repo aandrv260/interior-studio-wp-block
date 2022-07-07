@@ -14,6 +14,30 @@
     }
   }
 
+  &--full-blue {
+    background-color: #0d3b66;
+
+    &:hover {
+      border-color: #0d3b66;
+    }
+  }
+
+  &--full-orange {
+    background-color: #ee964b;
+
+    &:hover {
+      border-color: #ee964b;
+    }
+  }
+
+  &--full-dark-orange {
+    background-color: #f95738;
+
+    &:hover {
+      border-color: #f95738;
+    }
+  }
+
   &--outline {
     background-color: transparent;
     color: #333;
@@ -23,6 +47,33 @@
 
     &:hover {
       background-color: rgba(222, 184, 135, 0.85);
+    }
+  }
+
+  &--outline-blue {
+    border-color: #0d3b66;
+
+    &:hover {
+      background-color: #0d3b66;
+      border-color: #fff;
+    }
+  }
+
+  &--outline-orange {
+    border-color: #ee964b;
+
+    &:hover {
+      background-color: #ee964b;
+      border-color: #fff;
+    }
+  }
+
+  &--outline-dark-orange {
+    border-color: #f95738;
+
+    &:hover {
+      background-color: #f95738;
+      border-color: #fff;
     }
   }
 
