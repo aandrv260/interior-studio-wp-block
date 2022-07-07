@@ -318,6 +318,18 @@ Components
 .btn--outline:hover {
   background-color: rgba(222, 184, 135, 0.85);
 }
+.btn--small {
+  padding: 0.8rem 1.8rem;
+  font-size: 1.4rem;
+}
+.btn--medium {
+  padding: 1rem 2.2rem;
+  font-size: 1.6rem;
+}
+.btn--large {
+  padding: 1rem 2.8rem;
+  font-size: 2rem;
+}
 
 .section--hero {
   display: flex;
@@ -381,6 +393,21 @@ Components
   top: 120%;
   left: -70%;
   font-weight: 400;
+}
+.hero__btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+}
+.hero__btn-box--left {
+  justify-content: flex-start;
+}
+.hero__btn-box--center {
+  justify-content: center;
+}
+.hero__btn-box--right {
+  justify-content: flex-end;
 }
 .hero__btn {
   align-self: flex-start;

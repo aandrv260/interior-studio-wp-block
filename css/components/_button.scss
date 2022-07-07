@@ -25,4 +25,19 @@
       background-color: rgba(222, 184, 135, 0.85);
     }
   }
+
+  &--small {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.4rem;
+  }
+
+  &--medium {
+    padding: 1rem 2.2rem;
+    font-size: 1.6rem;
+  }
+
+  &--large {
+    padding: 1rem 2.8rem;
+    font-size: 2rem;
+  }
 }

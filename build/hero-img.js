@@ -155,7 +155,7 @@ function EditComponent() {
   }, "EN"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "header-alternative__content-box"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
-    allowedBlocks: ['custom-blocks/generic-heading']
+    allowedBlocks: ['custom-blocks/generic-heading', 'custom-blocks/generic-button']
   }))));
 }
 

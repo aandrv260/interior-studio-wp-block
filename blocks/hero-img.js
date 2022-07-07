@@ -39,7 +39,9 @@ function EditComponent() {
         </div>
         {/* This lets you click the + symbol on the editor to start adding new blocks inside the main block */}
         <div className="header-alternative__content-box">
-          <InnerBlocks allowedBlocks={['custom-blocks/generic-heading']} />
+          <InnerBlocks
+            allowedBlocks={['custom-blocks/generic-heading', 'custom-blocks/generic-button']}
+          />
         </div>
       </div>
     </header>
