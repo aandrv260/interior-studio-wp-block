@@ -1,3 +1,4 @@
+import { link } from '@wordpress/icons';
 import { registerBlockType } from '@wordpress/blocks';
 import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
 import { RichText, BlockControls } from '@wordpress/block-editor';
@@ -20,9 +21,31 @@ function EditComponent(props) {
     attributes: { text, size, btnStyle, position },
   } = props;
 
+  const linkBtnClickHandler = () => {};
+
   return (
     <>
       <BlockControls>
+        <ToolbarGroup>
+          <ToolbarButton onClick={linkBtnClickHandler} icon={link} />
+        </ToolbarGroup>
+
+        <ToolbarGroup>
+          <ToolbarButton
+            isPressed={btnStyle === 'full'}
+            onClick={() => setAttributes({ btnStyle: 'full' })}
+          >
+            Full
+          </ToolbarButton>
+
+          <ToolbarButton
+            isPressed={btnStyle === 'outline'}
+            onClick={() => setAttributes({ btnStyle: 'outline' })}
+          >
+            Outline
+          </ToolbarButton>
+        </ToolbarGroup>
+
         <ToolbarGroup>
           <ToolbarButton
             isPressed={size === 'large'}
@@ -43,22 +66,6 @@ function EditComponent(props) {
             onClick={() => setAttributes({ size: 'small' })}
           >
             Small
-          </ToolbarButton>
-        </ToolbarGroup>
-
-        <ToolbarGroup>
-          <ToolbarButton
-            isPressed={btnStyle === 'full'}
-            onClick={() => setAttributes({ btnStyle: 'full' })}
-          >
-            Full
-          </ToolbarButton>
-
-          <ToolbarButton
-            isPressed={btnStyle === 'outline'}
-            onClick={() => setAttributes({ btnStyle: 'outline' })}
-          >
-            Outline
           </ToolbarButton>
         </ToolbarGroup>
 
