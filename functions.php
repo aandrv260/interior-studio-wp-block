@@ -149,9 +149,11 @@ add_action('wp_enqueue_scripts', 'insert_asset_files');
 
 class CustomBlock
 {
-    function __construct($name, $render_callback = NULL)
+    function __construct($name, $render_callback = NULL, $data = NULL)
     {
         $this->name = $name;
+        $this->data = $data;
+
         $this->render_callback = $render_callback;
         add_action('init', [$this, 'on_init']);
     }
@@ -166,6 +168,11 @@ class CustomBlock
     function on_init()
     {
         wp_register_script($this->name, get_stylesheet_directory_uri() . "/build/{$this->name}.js", array('wp-blocks', 'wp-editor'));
+
+        if ($this->data) {
+            wp_localize_script($this->name, str_replace('-', '_', $this->name), $this->data);
+        }
+
         $our_args = array(
             'editor_script' => $this->name,
         );
@@ -179,7 +186,10 @@ class CustomBlock
 }
 
 
-new CustomBlock('hero-img', true);
+new CustomBlock('hero-img', true, ['fallback_img' => get_theme_file_uri('/images/header-non-homepage/header-img.jpg')]);
 new CustomBlock('generic-heading');
 new CustomBlock('generic-description');
 new CustomBlock('generic-button');
+new CustomBlock('section-about', true);
+new CustomBlock('section-heading');
+new CustomBlock('section-description');

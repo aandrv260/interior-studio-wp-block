@@ -20,8 +20,8 @@ registerBlockType('custom-blocks/hero-img', {
     bgImgID: { type: 'number' },
     bgImgURL: {
       type: 'string',
-      default:
-        '/wp-content/themes/interior-studio-block-theme/images/header-non-homepage/header-img.jpg',
+      default: window.hero_img.fallback_img,
+      //   '/wp-content/themes/interior-studio-block-theme/images/header-non-homepage/header-img.jpg',
     },
   },
 
