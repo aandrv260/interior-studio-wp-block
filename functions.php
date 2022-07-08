@@ -174,6 +174,7 @@ class PlaceholderBlock
 }
 
 new PlaceholderBlock('header-only-nav');
+new PlaceholderBlock('blog-posts');
 
 class CustomBlock
 {
