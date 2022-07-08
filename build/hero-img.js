@@ -129,7 +129,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)('custom-blocks/hero', {
+const {
+  serverSideRender: ServerSideRender
+} = wp;
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)('custom-blocks/hero-img', {
   title: 'Hero',
   supports: {
     align: ['full']
@@ -144,7 +147,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     bgImgURL: {
       type: 'string',
-      default: '/wp-content/themes/interior-studio-block-theme/images/header-non-homepage/header-img.jpg'
+      default: window.hero_img.fallback_img //   '/wp-content/themes/interior-studio-block-theme/images/header-non-homepage/header-img.jpg',
+
     }
   },
   edit: EditComponent,
@@ -235,36 +239,36 @@ function SaveComponent(props) {
       bgImgURL
     }
   } = props;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", {
-    className: "header-alternative",
-    style: {
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),  url(${bgImgURL})`
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "hero__header",
-    style: {
-      paddingRight: '3rem'
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    className: "hero__logo",
-    href: "#"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: "/wp-content/themes/interior-studio-block-theme/images/logos/logo-cropped.png",
-    alt: "\u041B\u043E\u0433\u043E"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "lang-selector"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "lang-selector__label"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "lang-selector__label--lang-code lang-selector__label--lang-code--active"
-  }, "BG"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "lang-selector__label--slash"
-  }, "/"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "lang-selector__label--lang-code"
-  }, "EN"))), ' ', (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "header-alternative__content-box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null), ' ')));
-}
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null);
+} //<header
+// className="header-alternative"
+//style={{
+//  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),  url(${bgImgURL})`,
+//  }}
+// >
+//<div className="hero__header" style={{ paddingRight: '3rem' }}>
+//  <a className="hero__logo" href="#">
+//  <img
+//   src="/wp-content/themes/interior-studio-block-theme/images/logos/logo-cropped.png"
+//  alt="Лого"
+///>
+// </a>
+//{/* Watch the Header / Footer lecture and then add the navigation */}
+// <div className="lang-selector">
+//  <span className="lang-selector__label">
+//    <span className="lang-selector__label--lang-code lang-selector__label--lang-code--active">
+//      BG
+//  </span>
+// <span className="lang-selector__label--slash">/</span>
+//  <span className="lang-selector__label--lang-code">EN</span>
+//  </span>
+// </div>
+// {/* This will be shown on the front-end */}{' '}
+// <div className="header-alternative__content-box">
+//    <InnerBlocks.Content />{' '}
+//  </div>
+//</div>
+// </header>
 })();
 
 /******/ })()
