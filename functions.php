@@ -174,6 +174,7 @@ class PlaceholderBlock
 }
 
 new PlaceholderBlock('header-only-nav');
+// new PlaceholderBlock('blog-posts');
 
 class CustomBlock
 {
@@ -222,3 +223,4 @@ new CustomBlock('section-heading');
 new CustomBlock('section-description');
 new CustomBlock('hero-video', true);
 new CustomBlock('section-team', true);
+new CustomBlock('blog-posts', true);
