@@ -178,6 +178,14 @@
     transform: translateY(0);
   }
 }
+.editor-placeholder {
+  padding: 2rem;
+  background-color: #333;
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+}
+
 /**
 BASE
 */

@@ -147,6 +147,34 @@ add_action('wp_enqueue_scripts', 'insert_asset_files');
 //     }
 // }
 
+class PlaceholderBlock
+{
+    function __construct($name)
+    {
+        $this->name = $name;
+        add_action('init', [$this, 'on_init']);
+    }
+
+    function our_render_callback($attributes, $content)
+    {
+        ob_start();
+        require get_theme_file_path("/blocks/{$this->name}.php");
+        return ob_get_clean();
+    }
+
+    function on_init()
+    {
+        wp_register_script($this->name, get_stylesheet_directory_uri() . "/blocks/{$this->name}.js", array('wp-blocks', 'wp-editor'));
+
+        register_block_type("custom-blocks/{$this->name}", array(
+            'editor_script' => $this->name,
+            'render_callback' => [$this, 'our_render_callback'],
+        ));
+    }
+}
+
+new PlaceholderBlock('header-only-nav');
+
 class CustomBlock
 {
     function __construct($name, $render_callback = NULL, $data = NULL)
@@ -184,7 +212,6 @@ class CustomBlock
         register_block_type("custom-blocks/{$this->name}", $our_args);
     }
 }
-
 
 new CustomBlock('hero-img', true, ['fallback_img' => get_theme_file_uri('/images/header-non-homepage/header-img.jpg')]);
 new CustomBlock('generic-heading');
