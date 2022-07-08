@@ -1,6 +1,7 @@
 <section class="section--blog-articles">
     <div class="text-center margin-btm-lg-2">
-        <h2 class="heading--secondary">Полезни статии</h2>
+        <h2 class="heading--secondary"><?php echo $attributes['heading'] ?></h2>
+        <!-- <h2 class="heading--secondary">Полезни статии</h2> -->
     </div>
 
     <div class="container">
