@@ -233,12 +233,7 @@ function EditComponent(props) {
   })))));
 }
 
-function SaveComponent(props) {
-  const {
-    attributes: {
-      bgImgURL
-    }
-  } = props;
+function SaveComponent() {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null);
 } //<header
 // className="header-alternative"
