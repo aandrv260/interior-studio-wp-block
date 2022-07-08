@@ -22,11 +22,26 @@
     padding: 1rem;
     border: 1px solid #fff;
     border-radius: 2px;
+
+    ul {
+      list-style: circle;
+      margin-bottom: 3.2rem;
+    }
+
+    li {
+      margin-left: 2rem;
+    }
+
+    p {
+      font-size: 1.8rem;
+      line-height: 2.2;
+    }
   }
 
   &__text-container {
     @include flex(center, center, null);
     align-items: stretch;
+    justify-content: stretch;
     flex-direction: column;
     height: 100%;
     padding: 0 2.2rem;

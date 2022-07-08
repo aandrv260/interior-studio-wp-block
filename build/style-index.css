@@ -564,11 +564,23 @@ Components
   border: 1px solid #fff;
   border-radius: 2px;
 }
+.team__text-box ul {
+  list-style: circle;
+  margin-bottom: 3.2rem;
+}
+.team__text-box li {
+  margin-left: 2rem;
+}
+.team__text-box p {
+  font-size: 1.8rem;
+  line-height: 2.2;
+}
 .team__text-container {
   display: flex;
   align-items: center;
   justify-content: center;
   align-items: stretch;
+  justify-content: stretch;
   flex-direction: column;
   height: 100%;
   padding: 0 2.2rem;

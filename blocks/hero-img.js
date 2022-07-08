@@ -112,11 +112,7 @@ function EditComponent(props) {
   );
 }
 
-function SaveComponent(props) {
-  const {
-    attributes: { bgImgURL },
-  } = props;
-
+function SaveComponent() {
   return <InnerBlocks.Content />;
 }
 
