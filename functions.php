@@ -193,3 +193,4 @@ new CustomBlock('generic-button');
 new CustomBlock('section-about', true);
 new CustomBlock('section-heading');
 new CustomBlock('section-description');
+new CustomBlock('hero-video', true);
