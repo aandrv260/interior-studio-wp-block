@@ -75,6 +75,23 @@
     font-weight: $font-weight-normal;
   }
 
+  &__btn-box {
+    @include flex(center, center, null);
+    gap: 2.4rem;
+
+    &--left {
+      justify-content: flex-start;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--right {
+      justify-content: flex-end;
+    }
+  }
+
   &__btn {
     align-self: flex-start;
     font-size: 2rem;
