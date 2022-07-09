@@ -226,3 +226,4 @@ new CustomBlock('section-team', true);
 new CustomBlock('blog-posts', true);
 new CustomBlock('contacts-section', true);
 new CustomBlock('portfolio-items', true);
+new CustomBlock('services-section', true);
