@@ -824,6 +824,14 @@ Components
   letter-spacing: 1.5px;
   resize: vertical;
 }
+.contact-form__input::-moz-placeholder, .contact-form__message::-moz-placeholder {
+  color: #fff;
+  font-weight: 300;
+}
+.contact-form__input::placeholder, .contact-form__message::placeholder {
+  color: #fff;
+  font-weight: 300;
+}
 .contact-form .btn {
   width: 50%;
   margin: 0 auto;
@@ -831,6 +839,19 @@ Components
 }
 .contact-form .btn:focus {
   outline: 3px solid #fff;
+}
+
+.contact-form-with-background input,
+.contact-form-with-background textarea {
+  background-color: #fff;
+}
+.contact-form-with-background input::-moz-placeholder, .contact-form-with-background textarea::-moz-placeholder {
+  color: #111;
+}
+.contact-form-with-background input, .contact-form-with-background input::placeholder,
+.contact-form-with-background textarea,
+.contact-form-with-background textarea::placeholder {
+  color: #111;
 }
 
 .bg-video {

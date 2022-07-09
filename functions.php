@@ -224,3 +224,4 @@ new CustomBlock('section-description');
 new CustomBlock('hero-video', true);
 new CustomBlock('section-team', true);
 new CustomBlock('blog-posts', true);
+new CustomBlock('contacts-section', true);

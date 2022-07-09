@@ -78,6 +78,14 @@ $default-form-border-radius: 3px;
     resize: vertical;
   }
 
+  &__input,
+  &__message {
+    &::placeholder {
+      color: #fff;
+      font-weight: 300;
+    }
+  }
+
   .btn {
     width: 50%;
     margin: 0 auto;
@@ -85,6 +93,18 @@ $default-form-border-radius: 3px;
 
     &:focus {
       outline: 3px solid #fff;
+    }
+  }
+}
+
+.contact-form-with-background {
+  input,
+  textarea {
+    background-color: #fff;
+
+    &,
+    &::placeholder {
+      color: $color-black;
     }
   }
 }
