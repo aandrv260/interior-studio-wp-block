@@ -7,7 +7,7 @@
             </li>
 
             <li class="main-nav__list-item">
-                <a class="main-nav__link<?php if (get_post_type() === 'portfolio') echo ' main-nav__link--active' ?>" href="<?php echo get_post_type_archive_link('portfolio') ?>">
+                <a class="main-nav__link<?php if (get_post_type() === 'portfolio') echo ' main-nav__link--active' ?>" href="<?php echo site_url('/portfolio') ?>">
                     <span>Портфолио</span>
                 </a>
             </li>
