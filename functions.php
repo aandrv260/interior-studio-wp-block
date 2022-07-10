@@ -89,7 +89,7 @@ function features()
     add_theme_support('post-thumbnails'); // Allow thumbnails on the normal posts
     add_image_size('portfolio_thumbnail', 325, 505, true); // Portfolio thumbnail
     add_theme_support('editor-styles');
-    add_editor_style(array('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet', 'build/style-index.css'));
+    add_editor_style(array('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet', 'build/style-index.css', 'build/style-index.css.map'));
 }
 
 add_action('after_setup_theme', 'features');
@@ -237,3 +237,4 @@ new CustomBlock('section-team', true);
 // Portfolio
 new CustomBlock('portfolio-items', true);
 new CustomBlock('portfolio-header', true);
+new CustomBlock('portfolio-row-img-text', true);

@@ -7,8 +7,6 @@ import {
 import { Button, PanelBody, PanelRow } from '@wordpress/components';
 import { registerBlockType } from '@wordpress/blocks';
 
-const { serverSideRender: ServerSideRender } = wp;
-
 registerBlockType('custom-blocks/portfolio-header', {
   title: 'Portfolio Header',
   supports: {

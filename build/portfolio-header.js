@@ -129,9 +129,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const {
-  serverSideRender: ServerSideRender
-} = wp;
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)('custom-blocks/portfolio-header', {
   title: 'Portfolio Header',
   supports: {
