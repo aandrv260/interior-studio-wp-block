@@ -89,7 +89,7 @@ function features()
     add_theme_support('post-thumbnails'); // Allow thumbnails on the normal posts
     add_image_size('portfolio_thumbnail', 325, 505, true); // Portfolio thumbnail
     add_theme_support('editor-styles');
-    add_editor_style(array('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet', 'build/style-index.css'));
+    add_editor_style(array('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet', 'build/style-index.css', 'build/style-index.css.map'));
 }
 
 add_action('after_setup_theme', 'features');
@@ -214,16 +214,27 @@ class CustomBlock
     }
 }
 
+// Hero
 new CustomBlock('hero-img', true, ['fallback_img' => get_theme_file_uri('/images/header-non-homepage/header-img.jpg')]);
+new CustomBlock('hero-video', true);
+
+// Generic Block
 new CustomBlock('generic-heading');
 new CustomBlock('generic-description');
 new CustomBlock('generic-button');
+
+// Blog
+new CustomBlock('blog-posts', true);
+
+// Sections
+new CustomBlock('contacts-section', true);
+new CustomBlock('services-section', true);
 new CustomBlock('section-about', true);
 new CustomBlock('section-heading');
 new CustomBlock('section-description');
-new CustomBlock('hero-video', true);
 new CustomBlock('section-team', true);
-new CustomBlock('blog-posts', true);
-new CustomBlock('contacts-section', true);
+
+// Portfolio
 new CustomBlock('portfolio-items', true);
-new CustomBlock('services-section', true);
+new CustomBlock('portfolio-header', true);
+new CustomBlock('portfolio-row-img-text', true);

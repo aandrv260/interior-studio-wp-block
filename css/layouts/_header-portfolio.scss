@@ -6,7 +6,9 @@
   //   80vh,
   //   null
   // );
+  background-color: #fff;
   height: 80vh;
-  background-attachment: scroll;
   margin-bottom: 0.5rem;
+  @include bg-image-settings;
+  background-attachment: scroll;
 }

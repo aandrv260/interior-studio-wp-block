@@ -7,11 +7,41 @@
 
   &__img-box > &__img-group {
     display: flex;
-    align-items: center;
+    // align-items: center;
     gap: 3px;
 
     img {
       width: 50%;
+    }
+  }
+
+  &__img-group.img-1 {
+    img {
+      width: 100%;
+    }
+  }
+
+  &__img-group.img-2 {
+    img {
+      width: 50%;
+    }
+  }
+
+  &__img-group.img-3 {
+    img {
+      width: 33.3333%;
+    }
+  }
+
+  &__img-group.img-row {
+    flex-direction: row;
+  }
+
+  &__img-group.img-column {
+    flex-direction: column;
+
+    img {
+      width: 100%;
     }
   }
 
@@ -52,12 +82,18 @@
     background-color: rgba(50, 39, 25, 0.9);
   }
 
+  &__text-box h1,
+  &__text-box h2,
+  &__text-box h3,
+  &__text-box h4,
+  &__text-box h5,
   &__heading {
     text-align: center;
     font-size: 3.8rem;
     margin-bottom: 2.4rem;
   }
 
+  &__text-box p,
   &__desc {
     font-size: 1.8rem;
     letter-spacing: $letter-spacing-2;
