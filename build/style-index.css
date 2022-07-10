@@ -1075,12 +1075,6 @@ Components
 .portfolio-project__img-box > .portfolio-project__img-group img {
   width: 50%;
 }
-.portfolio-project__img-group.img-row {
-  flex-direction: row;
-}
-.portfolio-project__img-group.img-column {
-  flex-direction: column;
-}
 .portfolio-project__img-group.img-1 img {
   width: 100%;
 }
@@ -1089,6 +1083,15 @@ Components
 }
 .portfolio-project__img-group.img-3 img {
   width: 33.3333%;
+}
+.portfolio-project__img-group.img-row {
+  flex-direction: row;
+}
+.portfolio-project__img-group.img-column {
+  flex-direction: column;
+}
+.portfolio-project__img-group.img-column img {
+  width: 100%;
 }
 .portfolio-project__img-group--col.small img, .portfolio-project__img-group.small img {
   width: 30% !important;

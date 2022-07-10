@@ -15,14 +15,6 @@
     }
   }
 
-  &__img-group.img-row {
-    flex-direction: row;
-  }
-
-  &__img-group.img-column {
-    flex-direction: column;
-  }
-
   &__img-group.img-1 {
     img {
       width: 100%;
@@ -38,6 +30,18 @@
   &__img-group.img-3 {
     img {
       width: 33.3333%;
+    }
+  }
+
+  &__img-group.img-row {
+    flex-direction: row;
+  }
+
+  &__img-group.img-column {
+    flex-direction: column;
+
+    img {
+      width: 100%;
     }
   }
 
