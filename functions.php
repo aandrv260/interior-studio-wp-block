@@ -214,16 +214,26 @@ class CustomBlock
     }
 }
 
+// Hero
 new CustomBlock('hero-img', true, ['fallback_img' => get_theme_file_uri('/images/header-non-homepage/header-img.jpg')]);
+new CustomBlock('hero-video', true);
+
+// Generic Block
 new CustomBlock('generic-heading');
 new CustomBlock('generic-description');
 new CustomBlock('generic-button');
+
+// Blog
+new CustomBlock('blog-posts', true);
+
+// Sections
+new CustomBlock('contacts-section', true);
+new CustomBlock('services-section', true);
 new CustomBlock('section-about', true);
 new CustomBlock('section-heading');
 new CustomBlock('section-description');
-new CustomBlock('hero-video', true);
 new CustomBlock('section-team', true);
-new CustomBlock('blog-posts', true);
-new CustomBlock('contacts-section', true);
+
+// Portfolio
 new CustomBlock('portfolio-items', true);
-new CustomBlock('services-section', true);
+new CustomBlock('portfolio-header', true);

@@ -258,6 +258,7 @@ textarea::placeholder {
 
 body {
   font-family: "Josefin Sans", sans-serif;
+  background-color: #111;
   font-size: 1.6rem;
   color: #fff;
   font-weight: 400;
@@ -1191,9 +1192,14 @@ LAYOUT
 }
 
 .header-portfolio-img-only {
+  background-color: #fff;
   height: 80vh;
-  background-attachment: scroll;
   margin-bottom: 0.5rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 .header-alternative {
