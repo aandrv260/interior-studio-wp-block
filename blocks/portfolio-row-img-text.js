@@ -140,6 +140,19 @@ function EditComponent(props) {
               onChange={newDir => setAttributes({ imagesDirection: newDir })}
             />
           </PanelRow>
+
+          <PanelRow>
+            <SelectControl
+              label="Side of the images column"
+              help="Which side would you like to place the images column on? Left or right?"
+              value={imgSide}
+              options={[
+                { value: 'left', label: 'Left' },
+                { value: 'right', label: 'Right' },
+              ]}
+              onChange={newSide => setAttributes({ imgSide: newSide })}
+            />
+          </PanelRow>
         </>
       );
     };
@@ -175,29 +188,21 @@ function EditComponent(props) {
   return (
     <>
       <InspectorControlsOptions />
+
       <div className="portfolio-project grid grid--2-cols">
-        <div className="portfolio-project__img-box">
-          <div
-            className={`portfolio-project__img-group img-${numberOfImgs} img-${imagesDirection}`}
-          >
-            {/* <img
-              className="portfolio-project__img"
-              src="images/portfolios-project-page/microhome/scheme-1.png"
-              alt="Снимка на схема 1"
-            />
+        {imgSide === 'left' && (
+          <>
+            <div className="portfolio-project__img-box">
+              <div
+                className={`portfolio-project__img-group img-${numberOfImgs} img-${imagesDirection}`}
+              >
+                <ImagesSelected />
+              </div>
+            </div>
 
-            <img
-              className="portfolio-project__img"
-              src="images/portfolios-project-page/microhome/scheme-1.png"
-              alt="Снимка на схема 1"
-            /> */}
-            <ImagesSelected />
-          </div>
-        </div>
-
-        <div className="portfolio-project__text-box">
-          <InnerBlocks allowedBlocks={['core/heading', 'core/paragraph']} />
-          {/* <h3 className="portfolio-project__heading">Microhome</h3>
+            <div className="portfolio-project__text-box">
+              <InnerBlocks allowedBlocks={['core/heading', 'core/paragraph']} />
+              {/* <h3 className="portfolio-project__heading">Microhome</h3>
           <p className="portfolio-project__desc">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos vero ipsum iusto. Qui
             officia ab commodi minima optio animi reprehenderit voluptate molestias eaque. Sit
@@ -209,7 +214,36 @@ function EditComponent(props) {
             adipisci rerum delectus maxime iure natus id aliquid, laudantium perspiciatis est fugit
             quisquam eius quia? In neque nihil vitae.
           </p> */}
-        </div>
+            </div>
+          </>
+        )}
+
+        {imgSide === 'right' && (
+          <>
+            <div className="portfolio-project__text-box">
+              <InnerBlocks allowedBlocks={['core/heading', 'core/paragraph']} />
+              {/* <h3 className="portfolio-project__heading">Microhome</h3>
+        <p className="portfolio-project__desc">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos vero ipsum iusto. Qui
+          officia ab commodi minima optio animi reprehenderit voluptate molestias eaque. Sit
+          voluptatum eaque odit? Iste, quod illum voluptates facilis alias ab culpa deserunt sint,
+          veniam non nam atque quidem? Voluptatum dolore architecto tenetur at commodi ratione
+          fuga ipsa adipisci, quidem ea aperiam eum. Doloribus, ad. Aliquam sequi autem, iure
+          quidem delectus quibusdam accusantium tenetur veritatis. Consequatur ex reiciendis
+          ratione dignissimos aliquam magnam numquam veniam omnis debitis reprehenderit odit
+          adipisci rerum delectus maxime iure natus id aliquid, laudantium perspiciatis est fugit
+          quisquam eius quia? In neque nihil vitae.
+        </p> */}
+            </div>
+            <div className="portfolio-project__img-box">
+              <div
+                className={`portfolio-project__img-group img-${numberOfImgs} img-${imagesDirection}`}
+              >
+                <ImagesSelected />
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
