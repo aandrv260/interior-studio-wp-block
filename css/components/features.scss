@@ -1,6 +1,7 @@
-.section--features {
+.section-features {
   border-bottom: 1px solid #fff;
   background-color: transparent;
+  @include bg-image-settings;
   // @include set-padding('vert', 12.8rem);
 }
 
@@ -12,27 +13,36 @@
   &__text-box-col {
     padding: 2.4rem 3.2rem;
     background-color: rgba($color-grey-dark-1, 0.7);
+
+    p:not(:last-child) {
+      margin-bottom: 1rem;
+    }
   }
 
-  &__text-heading {
+  &__text-heading,
+  h2,
+  h3 {
     letter-spacing: $letter-spacing-4;
     font-size: 2.5rem;
     margin-bottom: 2.4rem;
   }
 
-  &__list-item {
+  &__list-item,
+  p {
     font-size: 1.7rem;
     letter-spacing: $letter-spacing-1;
     color: $color-grey-light-2;
     line-height: 2;
 
-    &:not(:last-child) {
-      margin-bottom: 1rem;
-    }
-
     strong {
       font-size: 1.8rem;
       color: #fff;
+    }
+  }
+
+  &__list-item {
+    &:not(:last-child) {
+      margin-bottom: 1rem;
     }
   }
 
