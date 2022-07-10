@@ -161,62 +161,61 @@ $pricingHeading = $attributes['pricingHeading'];
             </div> -->
         </div>
     </div>
-</section>
 
-<section class="section--pricing">
-    <div class="text-center margin-btm-lg-2">
-        <h2 class="heading--secondary"><?php echo $pricingHeading; ?></h2>
-    </div>
+    <div class="section--pricing">
+        <div class="text-center margin-btm-lg-2">
+            <h2 class="heading--secondary"><?php echo $pricingHeading; ?></h2>
+        </div>
 
-    <div class="container">
-        <div class="cards grid grid--3-cols margin-btm-lg">
-            <?php
-            $pricing_plans = new WP_Query(array(
-                'show_in_rest' => true,
-                'posts_per_page' => -1,
-                'post_type' => 'pricing-plan',
-                'meta_key' => 'feature_price',
-                'orderby' => 'meta_value_num',
-                'order' => 'ASC',
-            ));
+        <div class="container">
+            <div class="cards grid grid--3-cols margin-btm-lg">
+                <?php
+                $pricing_plans = new WP_Query(array(
+                    'show_in_rest' => true,
+                    'posts_per_page' => -1,
+                    'post_type' => 'pricing-plan',
+                    'meta_key' => 'feature_price',
+                    'orderby' => 'meta_value_num',
+                    'order' => 'ASC',
+                ));
 
-            while ($pricing_plans->have_posts()) {
-                $pricing_plans->the_post(); ?>
-                <div class="card-outline">
-                    <div class="card">
-                        <div class="card__header">
-                            <span class="card__name"><?php echo get_the_title(); ?></span>
-                            <span class="card__price">
-                                <span class="card__price-num"><?php echo get_field('feature_price') ?></span><span class="card__price-unit">лв / кв</span>
-                            </span>
-                        </div>
+                while ($pricing_plans->have_posts()) {
+                    $pricing_plans->the_post(); ?>
+                    <div class="card-outline">
+                        <div class="card">
+                            <div class="card__header">
+                                <span class="card__name"><?php echo get_the_title(); ?></span>
+                                <span class="card__price">
+                                    <span class="card__price-num"><?php echo get_field('feature_price') ?></span><span class="card__price-unit">лв / кв</span>
+                                </span>
+                            </div>
 
-                        <div class="card__body">
-                            <?php
-                            $feature_fields = array(get_field('feature_one'), get_field('feature_two'), get_field('feature_three'), get_field('feature_four'), get_field('feature_five'), get_field('feature_six'));
+                            <div class="card__body">
+                                <?php
+                                $feature_fields = array(get_field('feature_one'), get_field('feature_two'), get_field('feature_three'), get_field('feature_four'), get_field('feature_five'), get_field('feature_six'));
 
-                            if (!empty($feature_fields)) { ?>
-                                <ul class="card__list">
-                                    <?php foreach ($feature_fields as $feature) {
-                                        if ($feature) { ?>
-                                            <li class="card__list-item">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="card__icon" viewBox="0 0 16 16">
-                                                    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
-                                                </svg>
-                                                <span><?php echo $feature ?></span>
-                                            </li>
-                                        <?php  } ?>
-                                    <?php } ?>
-                                </ul>
-                            <?php } ?>
+                                if (!empty($feature_fields)) { ?>
+                                    <ul class="card__list">
+                                        <?php foreach ($feature_fields as $feature) {
+                                            if ($feature) { ?>
+                                                <li class="card__list-item">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="card__icon" viewBox="0 0 16 16">
+                                                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                                                    </svg>
+                                                    <span><?php echo $feature ?></span>
+                                                </li>
+                                            <?php  } ?>
+                                        <?php } ?>
+                                    </ul>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php }
-            ?>
+                <?php }
+                ?>
 
 
-            <!-- <div class="card-outline">
+                <!-- <div class="card-outline">
                 <div class="card">
                     <div class="card__header">
                         <span class="card__name">ПРОЕКТИРАЙ</span>
@@ -323,18 +322,19 @@ $pricingHeading = $attributes['pricingHeading'];
                     </div>
                 </div>
             </div> -->
-        </div>
+            </div>
 
-        <div class="container text-center margin-btm-md">
-            <p class="desc">
-                <!-- *&nbsp;За по-големи проекти крайната цена е строго индивидуална спрямо вида на
+            <div class="container text-center margin-btm-md">
+                <p class="desc">
+                    <!-- *&nbsp;За по-големи проекти крайната цена е строго индивидуална спрямо вида на
                 помещението и сложността му. Именно заради това е предмет на конкретно договаряне. -->
-                <?php echo $pricingDescription; ?>
-            </p>
-        </div>
+                    <?php echo $pricingDescription; ?>
+                </p>
+            </div>
 
-        <div class="text-center">
-            <a class="btn btn--full text" href="mailto:contact@space-in.design"><?php echo $btnText; ?></a>
+            <div class="text-center">
+                <a class="btn btn--full text" href="mailto:contact@space-in.design"><?php echo $btnText; ?></a>
+            </div>
         </div>
     </div>
 </section>
