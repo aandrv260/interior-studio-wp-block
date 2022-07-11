@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "wp-scripts start src/index.js blocks/hero-img.js blocks/generic-heading.js blocks/generic-description.js blocks/generic-button.js blocks/section-about.js blocks/section-heading.js blocks/section-description.js blocks/hero-video.js blocks/header-only-nav.js blocks/section-team.js blocks/blog-posts.js blocks/contacts-section.js blocks/portfolio-items.js blocks/services-section.js blocks/portfolio-header.js blocks/portfolio-row-img-text.js",
+    "start": "wp-scripts start src/index.js blocks/hero-img.js blocks/generic-heading.js blocks/generic-description.js blocks/generic-button.js blocks/section-about.js blocks/section-heading.js blocks/section-description.js blocks/hero-video.js blocks/header-only-nav.js blocks/section-team.js blocks/blog-posts.js blocks/contacts-section.js blocks/portfolio-items.js blocks/services-section.js blocks/portfolio-header.js blocks/portfolio-row-img-text.js blocks/portfolio-2-img-cols.js blocks/portfolio-img-full-width.js",
     "dev": "wp-scripts start",
     "devFast": "wp-scripts start"
   },

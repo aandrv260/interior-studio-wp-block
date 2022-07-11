@@ -1,6 +1,14 @@
 .portfolio-project {
   gap: 2px;
 
+  &__img-box {
+    &--full-width {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
   &__img-box.grid {
     gap: 0;
   }
