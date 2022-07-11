@@ -241,3 +241,4 @@ new CustomBlock('portfolio-row-img-text', true);
 new CustomBlock('portfolio-2-img-cols', true);
 new CustomBlock('portfolio-img-full-width', true);
 new CustomBlock('portfolio-2-fwidth-img-cols', true);
+new CustomBlock('portfolio-img-80-20', true);
