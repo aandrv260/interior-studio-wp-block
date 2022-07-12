@@ -1,0 +1,23 @@
+.portfolio-img-grid {
+  padding: 3.2rem 6.4rem;
+  color: $color-black;
+
+  &__heading {
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__description {
+    border-top: 2px solid $color-black;
+    width: 50%;
+  }
+
+  .grid div {
+    display: flex;
+    flex-direction: column;
+  }
+}
