@@ -71,6 +71,10 @@
   grid-template-columns: 1fr;
 }
 
+.grid--1-cols {
+  grid-template-columns: 1fr;
+}
+
 .grid--2-cols {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -1078,6 +1082,9 @@ Components
 }
 .portfolio-project__img-box.grid {
   gap: 0;
+}
+.portfolio-project__img-group img:only-child {
+  width: 100%;
 }
 .portfolio-project__img-box > .portfolio-project__img-group {
   display: flex;
