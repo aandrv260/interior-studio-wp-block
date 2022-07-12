@@ -146,7 +146,7 @@ const arrayFromNumOfImages = num => {
   return arr;
 };
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)('custom-blocks/portfolio-imgs-grid', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)('custom-blocks/portfolio-img-grid', {
   title: 'Portfolio row - Images Grid',
   attributes: {
     imgsNum: {
@@ -364,7 +364,7 @@ function EditComponent(props) {
       img4Label: newValue
     })
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "portfolio-img-grid container"
+    className: "portfolio-img-grid"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
     className: "portfolio-img-grid__heading"
   }, heading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

@@ -1166,14 +1166,14 @@ Components
 }
 .portfolio-img-grid__img {
   width: 100%;
+  border-radius: 4px;
 }
 .portfolio-img-grid__description {
   border-top: 2px solid #111;
   width: 50%;
 }
 .portfolio-img-grid .grid div {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 2.4rem;
 }
 
 /**

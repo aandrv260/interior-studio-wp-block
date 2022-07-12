@@ -22,7 +22,7 @@ const arrayFromNumOfImages = num => {
   return arr;
 };
 
-registerBlockType('custom-blocks/portfolio-imgs-grid', {
+registerBlockType('custom-blocks/portfolio-img-grid', {
   title: 'Portfolio row - Images Grid',
 
   attributes: {
@@ -239,7 +239,7 @@ function EditComponent(props) {
         {/* END: Render images based on the number selected in the general options */}
       </InspectorControls>
 
-      <div className="portfolio-img-grid container">
+      <div className="portfolio-img-grid">
         <h3 className="portfolio-img-grid__heading">{heading}</h3>
 
         <div className={`grid grid--${imgsNum}-cols`}>
