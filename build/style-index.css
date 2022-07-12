@@ -282,8 +282,8 @@ body {
   font-size: 3.8rem;
   font-weight: 500;
   letter-spacing: 1px;
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   background-image: linear-gradient(to right bottom, rgb(235, 182, 117) 0%, #b5ad9f 50%, #bbe 70%);
 }
