@@ -113,9 +113,9 @@ module.exports = window["wp"]["element"];
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!**************************************!*\
-  !*** ./blocks/portfolio-img-grid.js ***!
-  \**************************************/
+/*!*******************************************!*\
+  !*** ./blocks/portfolio-2-imgs-2-cols.js ***!
+  \*******************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -129,97 +129,69 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const defaultImgObj = {
+const initialImgObject = {
   id: null,
-  url: ''
+  url: '',
+  alt: ''
 };
-
-const arrayFromNumOfImages = num => {
-  const arr = [];
-  let i = 0;
-
-  while (i < Number(num)) {
-    i++;
-    arr.push(i);
-  }
-
-  return arr;
-};
-
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)('custom-blocks/portfolio-img-grid', {
-  title: 'Portfolio row - Images Grid',
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)('custom-blocks/portfolio-2-imgs-2-cols', {
+  title: 'Portfolio row - 2 Image Cols with 2 images',
   attributes: {
-    imgsNum: {
+    imgCol2border: {
       type: 'string',
-      default: '2'
+      default: 'none'
     },
-    heading: {
+    // none or left
+    numberOfCol2Imgs: {
       type: 'string',
-      default: ''
+      default: '1'
     },
-    img1Label: {
+    imagesCol2Direction: {
       type: 'string',
-      default: ''
-    },
-    img2Label: {
-      type: 'string',
-      default: ''
-    },
-    img3Label: {
-      type: 'string',
-      default: ''
-    },
-    img4Label: {
-      type: 'string',
-      default: ''
+      default: 'row'
     },
     img1: {
       type: 'object',
-      default: defaultImgObj
+      default: initialImgObject
     },
     img2: {
       type: 'object',
-      default: defaultImgObj
+      default: initialImgObject
     },
     img3: {
       type: 'object',
-      default: defaultImgObj
+      default: initialImgObject
     },
     img4: {
       type: 'object',
-      default: defaultImgObj
+      default: initialImgObject
     }
   },
   edit: EditComponent,
   save: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null)
 });
-/*
-  Attributes:
-   -> How many grid items there will be
-   -> Image 1, label
-   -> Image 2, label
-   -> Image 3, label
-   -> Description (InnerBlock)
-  */
 
 function EditComponent(props) {
   const {
     setAttributes,
     attributes: {
-      imgsNum,
+      imgCol2border,
+      imgLeftCol,
+      numberOfCol2Imgs,
       img1,
       img2,
       img3,
       img4,
-      img1Label,
-      img2Label,
-      img3Label,
-      img4Label,
-      heading
+      imagesCol2Direction
     }
   } = props;
-  const allImages = [img1, img2, img3, img4];
-  console.log(img1Label);
+  const selectBorderOptions = [{
+    value: 'none',
+    label: 'None'
+  }, {
+    value: 'left',
+    label: 'Left'
+  }];
 
   const render = _ref => {
     let {
@@ -232,13 +204,13 @@ function EditComponent(props) {
   };
 
   const handleImgChange = (imgInfo, num) => {
-    if (![1, 2, 3].includes(num)) return;
+    const permitedNums = [1, 2, 3, 4];
+    if (!permitedNums.includes(num)) return;
     const {
       id,
       alt
     } = imgInfo;
-    const url = imgInfo.sizes.large.url || imgInfo.url; // setAttributes({ [`img${num}`]: { id, alt, url } });
-
+    const url = imgInfo.sizes.large.url || imgInfo.url;
     num === 1 && setAttributes({
       img1: {
         id,
@@ -260,123 +232,82 @@ function EditComponent(props) {
         url
       }
     });
+    num === 4 && setAttributes({
+      img4: {
+        id,
+        alt,
+        url
+      }
+    });
   };
 
-  const selectImgsNumOptions = [{
-    value: '2',
-    label: '2'
-  }, {
-    value: '3',
-    label: '3'
-  }, {
-    value: '4',
-    label: '4'
-  }];
-  const numberOfGridItems = arrayFromNumOfImages(imgsNum);
-  console.log(numberOfGridItems);
-
-  const ImageColumns = () => {
-    const finalImages = [];
-
-    for (let i = 0; i < numberOfGridItems.length; i++) {
-      finalImages.push(allImages[i]);
-      console.log(allImages[i]);
-    }
-
-    console.log(finalImages, allImages);
-    return numberOfGridItems.map(num => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      key: Math.random() + 2
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      className: "portfolio-img-grid__img",
-      src: finalImages[num - 1].url,
-      alt: finalImages[num - 1].alt || ''
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: "portfolio-img-grid__label"
-    }, props.attributes[`img${num}Label`])));
+  const ImageBox = _ref2 => {
+    let {
+      side
+    } = _ref2;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "portfolio-project__img-box"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "portfolio-project__img-group img-2 img-column"
+    }, (side === 'left' || !side) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      className: "portfolio-project__img",
+      src: img1.url,
+      alt: img1.alt
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      className: "portfolio-project__img",
+      src: img2.url,
+      alt: img2.alt
+    })), side === 'right' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      className: "portfolio-project__img",
+      src: img3.url,
+      alt: img3.alt
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      className: "portfolio-project__img",
+      src: img4.url,
+      alt: img4.alt
+    }))));
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "General Options",
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
-    label: "Select the number of images",
-    value: imgsNum,
-    onChange: newValue => setAttributes({
-      imgsNum: newValue
-    }),
-    options: selectImgsNumOptions
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Section Heading",
-    value: heading,
+    label: "Right column border",
+    options: selectBorderOptions,
+    value: imgCol2border,
     onChange: value => setAttributes({
-      heading: value
+      imgCol2border: value
     })
-  }))), imgsNum >= 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: `Image 1`,
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Left column",
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    onSelect: fileInfo => handleImgChange(fileInfo, 1),
     value: img1.id,
-    onSelect: imgInfo => handleImgChange(imgInfo, 1),
     render: render
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Image label",
-    value: img1Label,
-    onChange: newValue => setAttributes({
-      img1Label: newValue
-    })
-  }))), imgsNum >= 2 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: `Image 2`,
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    onSelect: fileInfo => handleImgChange(fileInfo, 2),
     value: img2.id,
-    onSelect: imgInfo => handleImgChange(imgInfo, 2),
     render: render
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Image label",
-    value: img2Label,
-    onChange: newValue => setAttributes({
-      img2Label: newValue
-    })
-  }))), imgsNum >= 3 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: `Image 3`,
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Right column",
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    onSelect: fileInfo => handleImgChange(fileInfo, 3),
     value: img3.id,
-    onSelect: imgInfo => handleImgChange(imgInfo, 3),
     render: render
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Image label",
-    value: img3Label,
-    onChange: newValue => setAttributes({
-      img3Label: newValue
-    })
-  }))), imgsNum >= 4 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: `Image 3`,
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    onSelect: fileInfo => handleImgChange(fileInfo, 4),
     value: img4.id,
-    onSelect: imgInfo => handleImgChange(imgInfo, 4),
     render: render
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Image label",
-    value: img4Label,
-    onChange: newValue => setAttributes({
-      img4Label: newValue
-    })
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "portfolio-img-grid"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
-    className: "portfolio-img-grid__heading"
-  }, heading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `grid grid--${imgsNum}-cols`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImageColumns, null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "portfolio-img-grid__description"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
-    allowedBlocks: ['core/paragraph']
-  }))));
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "portfolio-project grid grid--2-cols"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImageBox, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImageBox, {
+    side: "right"
+  })));
 }
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=portfolio-img-grid.js.map
+//# sourceMappingURL=portfolio-2-imgs-2-cols.js.map

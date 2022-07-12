@@ -71,6 +71,10 @@
   grid-template-columns: 1fr;
 }
 
+.grid--1-cols {
+  grid-template-columns: 1fr;
+}
+
 .grid--2-cols {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -1079,6 +1083,9 @@ Components
 .portfolio-project__img-box.grid {
   gap: 0;
 }
+.portfolio-project__img-group img:only-child {
+  width: 100%;
+}
 .portfolio-project__img-box > .portfolio-project__img-group {
   display: flex;
   gap: 3px;
@@ -1166,14 +1173,14 @@ Components
 }
 .portfolio-img-grid__img {
   width: 100%;
+  border-radius: 4px;
 }
 .portfolio-img-grid__description {
   border-top: 2px solid #111;
   width: 50%;
 }
 .portfolio-img-grid .grid div {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 2.4rem;
 }
 
 /**
