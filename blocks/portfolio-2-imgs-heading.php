@@ -4,18 +4,7 @@ $img2 = $attributes['img2'];
 $img1_label = $attributes['img1Label'];
 $img2_label = $attributes['img2Label'];
 
-function render_image($image)
-{ ?>
-    <img class="portfolio-project__img" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt']; ?>" />
 
-    <?php }
-
-function render_img_label($img_label)
-{
-    if ($img_label) { ?>
-        <p className="portfolio-project__label"><?php echo $img_label; ?></p>
-<?php }
-}
 ?>
 
 <div class="container">
