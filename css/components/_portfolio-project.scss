@@ -125,4 +125,10 @@
   &__num-list-item {
     margin-left: 3.2rem;
   }
+
+  &__label {
+    color: #333;
+    font-size: 2rem;
+    letter-spacing: $letter-spacing-2;
+  }
 }

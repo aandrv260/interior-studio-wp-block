@@ -247,3 +247,4 @@ new CustomBlock('portfolio-2-imgs-2-cols', true);
 new CustomBlock('portfolio-7-imgs-textbox', true);
 new CustomBlock('portfolio-2-imgs-80-20', true);
 new CustomBlock('portfolio-img-list-textbox', true);
+new CustomBlock('portfolio-2-imgs-heading', true);

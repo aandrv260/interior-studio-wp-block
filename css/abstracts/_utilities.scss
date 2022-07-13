@@ -80,6 +80,14 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
+.gap-48 {
+  gap: 4.8rem !important;
+}
+
+.gap-60 {
+  gap: 6rem !important;
+}
+
 .grid--80-20 {
   grid-template-columns: 0.8fr 0.2fr;
 }

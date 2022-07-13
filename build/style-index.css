@@ -87,6 +87,14 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
+.gap-48 {
+  gap: 4.8rem !important;
+}
+
+.gap-60 {
+  gap: 6rem !important;
+}
+
 .grid--80-20 {
   grid-template-columns: 0.8fr 0.2fr;
 }
@@ -1154,6 +1162,11 @@ Components
 }
 .portfolio-project__num-list-item {
   margin-left: 3.2rem;
+}
+.portfolio-project__label {
+  color: #333;
+  font-size: 2rem;
+  letter-spacing: 0.8px;
 }
 
 .portfolio-images__img-box--single {
