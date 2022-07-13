@@ -78,7 +78,7 @@ function output_main_nav($isOnlyNav)
         <header class="main-nav--no-hero">
             <?php main_nav_list(); ?>
         </header>
-<?php } else {
+    <?php } else {
         main_nav_list();
     }
 }
@@ -146,6 +146,19 @@ add_action('wp_enqueue_scripts', 'insert_asset_files');
 //         register_block_type("custom-blocks/{$this->name}", $our_args);
 //     }
 // }
+
+function render_image($image)
+{ ?>
+    <img class="portfolio-project__img" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt']; ?>" />
+
+    <?php }
+
+function render_img_label($img_label)
+{
+    if ($img_label) { ?>
+        <p className="portfolio-project__label"><?php echo $img_label; ?></p>
+<?php }
+}
 
 class PlaceholderBlock
 {
@@ -248,3 +261,4 @@ new CustomBlock('portfolio-7-imgs-textbox', true);
 new CustomBlock('portfolio-2-imgs-80-20', true);
 new CustomBlock('portfolio-img-list-textbox', true);
 new CustomBlock('portfolio-2-imgs-heading', true);
+new CustomBlock('portfolio-2-1-imgs-textbox', true);
