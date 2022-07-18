@@ -141,11 +141,7 @@ const initialImgObject = {
       type: 'string',
       default: 'none'
     },
-    // none or left
-    numberOfCol2Imgs: {
-      type: 'string',
-      default: '1'
-    },
+    // none or left,
     imagesCol2Direction: {
       type: 'string',
       default: 'row'
@@ -177,7 +173,6 @@ function EditComponent(props) {
     attributes: {
       imgCol2border,
       imgLeftCol,
-      numberOfCol2Imgs,
       img1,
       img2,
       img3,

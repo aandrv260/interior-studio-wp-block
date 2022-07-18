@@ -31,6 +31,70 @@ const PortfolioImage = _ref => {
 
 /***/ }),
 
+/***/ "./assets/components/PortfolioBoxes.js":
+/*!*********************************************!*\
+  !*** ./assets/components/PortfolioBoxes.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ImageBox": () => (/* binding */ ImageBox),
+/* harmony export */   "ImageGroup": () => (/* binding */ ImageGroup),
+/* harmony export */   "ImageLabel": () => (/* binding */ ImageLabel),
+/* harmony export */   "ListItems": () => (/* binding */ ListItems),
+/* harmony export */   "TextBox": () => (/* binding */ TextBox)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+const ImageBox = _ref => {
+  let {
+    direction,
+    children
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "portfolio-project__img-box"
+  }, children);
+};
+const ImageGroup = _ref2 => {
+  let {
+    children
+  } = _ref2;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "portfolio-project__img-group"
+  }, children);
+};
+const TextBox = _ref3 => {
+  let {
+    children
+  } = _ref3;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "portfolio-project__text-box"
+  }, children);
+};
+const ListItems = _ref4 => {
+  let {
+    items
+  } = _ref4;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ol", {
+    className: "portfolio-project__num-list"
+  }, items.map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    className: "portfolio-project__num-list-item",
+    key: Math.random()
+  }, item)));
+};
+const ImageLabel = _ref5 => {
+  let {
+    text
+  } = _ref5;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "portfolio-project__label"
+  }, text);
+};
+
+/***/ }),
+
 /***/ "./assets/components/render.js":
 /*!*************************************!*\
   !*** ./assets/components/render.js ***!
@@ -187,10 +251,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _assets_components_render__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/components/render */ "./assets/components/render.js");
 /* harmony import */ var _assets_components_Image__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/components/Image */ "./assets/components/Image.js");
+/* harmony import */ var _assets_components_PortfolioBoxes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../assets/components/PortfolioBoxes */ "./assets/components/PortfolioBoxes.js");
 
 
 
  //
+
 
 
 
@@ -207,13 +273,39 @@ const defaultImgObj = {
       default: defaultImgObj
     },
     listItems: {
-      type: 'string',
-      default: ''
+      type: 'object',
+      default: {
+        item1: '',
+        item2: '',
+        item3: '',
+        item4: '',
+        item5: '',
+        item6: '',
+        item7: '',
+        item8: '',
+        item9: '',
+        item10: '',
+        item11: '',
+        item12: ''
+      }
     }
   },
   edit: EditComponent,
   save: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null)
 });
+
+const ListItemControl = _ref => {
+  let {
+    value,
+    label,
+    onChange
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: label,
+    value: value,
+    onChange: onChange
+  }), ";");
+};
 
 function EditComponent(props) {
   const {
@@ -239,20 +331,122 @@ function EditComponent(props) {
     });
   };
 
+  const allListItems = [listItems.item1, listItems.item2, listItems.item3, listItems.item4, listItems.item5, listItems.item6, listItems.item7, listItems.item8, listItems.item9, listItems.item10, listItems.item11, listItems.item12];
+
+  const ImageListBox = () => {};
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Left Column",
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextareaControl, {
-    label: "List items",
-    value: listItems,
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 1`,
+    value: listItems['item1'],
     onChange: value => setAttributes({
-      listItems: value
+      listItems: { ...listItems,
+        ['item1']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 2`,
+    value: listItems['item2'],
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item2']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 3`,
+    value: listItems['item3'],
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item3']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 4`,
+    value: listItems['item4'],
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item4']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 5`,
+    value: listItems['item5'],
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item5']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 6`,
+    value: listItems['item6'],
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item6']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 7`,
+    value: listItems['item7'],
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item7']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 8`,
+    value: listItems['item8'],
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item8']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 9`,
+    value: listItems['item9'],
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item9']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 10`,
+    value: listItems['item10'],
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item10']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 11`,
+    value: listItems['item11'],
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item11']: value
+      }
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListItemControl, {
+    label: `List 12`,
+    value: listItems.item12,
+    onChange: value => setAttributes({
+      listItems: { ...listItems,
+        ['item12']: value
+      }
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
     value: img.id,
     onSelect: imgSelectHandler,
     render: _assets_components_render__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, listItems)));
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "portfolio-project grid grid--2-cols"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_assets_components_PortfolioBoxes__WEBPACK_IMPORTED_MODULE_6__.ImageBox, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_assets_components_PortfolioBoxes__WEBPACK_IMPORTED_MODULE_6__.ImageGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_assets_components_PortfolioBoxes__WEBPACK_IMPORTED_MODULE_6__.ListItems, {
+    items: allListItems
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_assets_components_Image__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    image: img
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_assets_components_PortfolioBoxes__WEBPACK_IMPORTED_MODULE_6__.TextBox, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
+    allowedBlocks: ['core/heading', 'core/paragraph']
+  }))));
 }
 })();
 

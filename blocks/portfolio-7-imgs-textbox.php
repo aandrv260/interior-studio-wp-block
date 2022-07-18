@@ -1,6 +1,8 @@
 <?php
 $imgs_num_left_col = $attributes['imgsNumLeftCol'] ? $attributes['imgsNumLeftCol'] : '2';
 $imgs_num_right_col = $attributes['imgsNumRightCol'] ? $attributes['imgsNumRightCol'] : '2';
+$has_textbox = $attributes['hasTextbox'] ? $attributes['hasTextbox'] : 'yes';
+$textbox_color = $attributes['textBoxColor'] ? $attributes['textBoxColor'] : 'brown';
 $img1 = $attributes['img1'];
 $img2 = $attributes['img2'];
 $img3 = $attributes['img3'];
@@ -30,9 +32,13 @@ $images_right = [$img4, $img5, $img6, $img7];
     </div>
 
     <div class="portfolio-project__combined-box">
-        <div class="portfolio-project__text-box">
-            <?php echo $content; ?>
-        </div>
+        <?php
+        if ($has_textbox === 'yes') { ?>
+
+            <div class="portfolio-project__text-box <?php echo "portfolio-project__text-box--{$textbox_color}"; ?>">
+                <?php echo $content; ?>
+            </div>
+        <?php  } ?>
 
         <div class="portfolio-project__img-box grid grid--<?php echo (int)$imgs_num_right_col === 2 ? '1' : '2'; ?>-cols">
             <?php

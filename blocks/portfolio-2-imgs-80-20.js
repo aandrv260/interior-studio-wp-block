@@ -5,7 +5,7 @@ import {
   MediaUploadCheck,
 } from '@wordpress/block-editor';
 
-import { Button, PanelBody, PanelRow, SelectControl, TextControl } from '@wordpress/components';
+import { Button, PanelBody, PanelRow } from '@wordpress/components';
 import { registerBlockType } from '@wordpress/blocks';
 
 const defaultImgObj = { id: null, url: '' };

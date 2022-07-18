@@ -14,8 +14,7 @@ registerBlockType('custom-blocks/portfolio-2-imgs-2-cols', {
   title: 'Portfolio row - 2 Image Cols with 2 images',
 
   attributes: {
-    imgCol2border: { type: 'string', default: 'none' }, // none or left
-    numberOfCol2Imgs: { type: 'string', default: '1' },
+    imgCol2border: { type: 'string', default: 'none' }, // none or left,
     imagesCol2Direction: { type: 'string', default: 'row' },
     img1: { type: 'object', default: initialImgObject },
     img2: { type: 'object', default: initialImgObject },
@@ -30,16 +29,7 @@ registerBlockType('custom-blocks/portfolio-2-imgs-2-cols', {
 function EditComponent(props) {
   const {
     setAttributes,
-    attributes: {
-      imgCol2border,
-      imgLeftCol,
-      numberOfCol2Imgs,
-      img1,
-      img2,
-      img3,
-      img4,
-      imagesCol2Direction,
-    },
+    attributes: { imgCol2border, imgLeftCol, img1, img2, img3, img4, imagesCol2Direction },
   } = props;
 
   const selectBorderOptions = [

@@ -436,7 +436,7 @@ function EditComponent(props) {
   const MultiImageCol = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "portfolio-project__img-box"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, +numberOfCol2Imgs === 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImagesSelected, null), +numberOfCol2Imgs > 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `portfolio-project__img-group portfolio-project__img-group--col portfolio-project__img-group--border-${imgCol2border} img-${numberOfCol2Imgs} img-${imagesCol2Direction}`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImagesSelected, null)));
   };

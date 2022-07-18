@@ -245,13 +245,15 @@ function EditComponent(props) {
   } = props;
 
   const imgSelectHandler = (fileInfo, num) => {
+    var _fileInfo$sizes$large;
+
     const allowedNums = [1, 2];
     if (!allowedNums.includes(num)) return;
     const {
       id,
       alt
     } = fileInfo;
-    const url = fileInfo.sizes.large.url || fileInfo.url;
+    const url = ((_fileInfo$sizes$large = fileInfo.sizes.large) === null || _fileInfo$sizes$large === void 0 ? void 0 : _fileInfo$sizes$large.url) || fileInfo.url;
     num === 1 && setAttributes({
       img1: {
         id,

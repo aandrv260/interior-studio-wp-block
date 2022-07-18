@@ -54,6 +54,15 @@
   letter-spacing: 2.5px !important;
 }
 
+.container {
+  max-width: 130rem;
+  margin: 0 auto;
+
+  &:not(:last-child) {
+    margin-bottom: 3.2rem;
+  }
+}
+
 .grid {
   display: grid !important;
   column-gap: 4.8rem;
@@ -78,6 +87,10 @@
 
 .grid--4-cols {
   grid-template-columns: repeat(4, 1fr);
+}
+
+.gap-12 {
+  gap: 1.2rem !important;
 }
 
 .gap-48 {

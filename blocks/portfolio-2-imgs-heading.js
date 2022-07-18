@@ -43,7 +43,7 @@ function EditComponent(props) {
     if (!allowedNums.includes(num)) return;
 
     const { id, alt } = fileInfo;
-    const url = fileInfo.sizes.large.url || fileInfo.url;
+    const url = fileInfo.sizes.large?.url || fileInfo.url;
 
     num === 1 && setAttributes({ img1: { id, alt, url } });
     num === 2 && setAttributes({ img2: { id, alt, url } });
