@@ -42,6 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ImageBox": () => (/* binding */ ImageBox),
 /* harmony export */   "ImageGroup": () => (/* binding */ ImageGroup),
 /* harmony export */   "ImageLabel": () => (/* binding */ ImageLabel),
+/* harmony export */   "ListItems": () => (/* binding */ ListItems),
 /* harmony export */   "TextBox": () => (/* binding */ TextBox)
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -72,10 +73,21 @@ const TextBox = _ref3 => {
     className: "portfolio-project__text-box"
   }, children);
 };
-const ImageLabel = _ref4 => {
+const ListItems = _ref4 => {
+  let {
+    items
+  } = _ref4;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ol", {
+    className: "portfolio-project__num-list"
+  }, items.map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    className: "portfolio-project__num-list-item",
+    key: Math.random()
+  }, item)));
+};
+const ImageLabel = _ref5 => {
   let {
     text
-  } = _ref4;
+  } = _ref5;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "portfolio-project__label"
   }, text);

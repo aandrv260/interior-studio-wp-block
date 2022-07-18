@@ -15,6 +15,7 @@ registerBlockType('custom-blocks/portfolio-row-img-text', {
     border: { type: 'string', default: 'none' },
     imgSide: { type: 'string', default: 'left' },
     numberOfImgs: { type: 'string', default: '1' },
+    textBoxColor: { type: 'string', default: 'grey' },
     imagesDirection: { type: 'string', default: 'row' },
     img1: { type: 'object', default: { id: null, url: '' } },
     img2: { type: 'object', default: { id: null, url: '' } },
@@ -28,7 +29,7 @@ registerBlockType('custom-blocks/portfolio-row-img-text', {
 function EditComponent(props) {
   const {
     setAttributes,
-    attributes: { border, imgSide, numberOfImgs, img1, img2, img3, imagesDirection },
+    attributes: { border, imgSide, numberOfImgs, img1, img2, img3, imagesDirection, textBoxColor },
   } = props;
 
   const arrayFromNumOfImages = () => {
@@ -102,11 +103,14 @@ function EditComponent(props) {
       switch (newValue) {
         case '1':
           setAttributes({ img2: { id: null, url: '' }, img3: { id: null, url: '' } });
+          break;
         case '2':
           setAttributes({ img3: { id: null, url: '' } });
+          break;
 
         default:
           '';
+          break;
       }
 
       setAttributes({ numberOfImgs: newValue });
@@ -160,6 +164,33 @@ function EditComponent(props) {
     return (
       <InspectorControls>
         <PanelBody title="Row options" initialOpen>
+          <PanelRow>
+            <SelectControl
+              label="Background color"
+              help="Select the background color of the textbox. By default, it is brown."
+              options={[
+                { value: 'none', label: 'None' },
+                { value: 'left', label: 'Left' },
+                { value: 'right', label: 'Right' },
+              ]}
+              value={border}
+              onChange={border => setAttributes({ border })}
+            />
+          </PanelRow>
+
+          <PanelRow>
+            <SelectControl
+              label="Background color"
+              help="Select the background color of the textbox. By default, it is brown."
+              options={[
+                { value: 'grey', label: 'Grey' },
+                { value: 'brown', label: 'Brown' },
+                { value: 'black', label: 'Black' },
+              ]}
+              value={textBoxColor}
+              onChange={color => setAttributes({ textBoxColor: color })}
+            />
+          </PanelRow>
           <ImagesGroupOptions />
           <ImagesControls />
         </PanelBody>
@@ -171,36 +202,59 @@ function EditComponent(props) {
     return (
       <>
         {img1.id && (
-          <img className="portfolio-project__img" src={img1.url} alt="Снимка на схема 1" />
+          <img
+            style={{ height: '100%' }}
+            className="portfolio-project__img"
+            src={img1.url}
+            alt="Снимка на схема 1"
+          />
         )}
 
         {img2.id && (
-          <img className="portfolio-project__img" src={img2.url} alt="Снимка на схема 1" />
+          <img
+            style={{ height: '100%' }}
+            className="portfolio-project__img"
+            src={img2.url}
+            alt="Снимка на схема 1"
+          />
         )}
 
         {img3.id && (
-          <img className="portfolio-project__img" src={img3.url} alt="Снимка на схема 1" />
+          <img
+            style={{ height: '100%' }}
+            className="portfolio-project__img"
+            src={img3.url}
+            alt="Снимка на схема 1"
+          />
         )}
       </>
     );
   };
 
+  console.log(+numberOfImgs);
+
   return (
     <>
       <InspectorControlsOptions />
 
-      <div className="portfolio-project grid grid--2-cols">
+      <div className={`portfolio-project${border !== 'none' ? ' gap-12' : ''} grid grid--2-cols`}>
         {imgSide === 'left' && (
           <>
-            <div className="portfolio-project__img-box">
-              <div
-                className={`portfolio-project__img-group img-${numberOfImgs} img-${imagesDirection}`}
-              >
-                <ImagesSelected />
-              </div>
+            <div className={`portfolio-project__img-box border-${border}`}>
+              {+numberOfImgs === 1 && <ImagesSelected />}
+
+              {+numberOfImgs > 1 && (
+                <div
+                  className={`portfolio-project__img-group img-${numberOfImgs} img-${imagesDirection}`}
+                >
+                  <ImagesSelected />
+                </div>
+              )}
             </div>
 
-            <div className="portfolio-project__text-box">
+            <div
+              className={`portfolio-project__text-box portfolio-project__text-box--${textBoxColor}`}
+            >
               <InnerBlocks allowedBlocks={['core/heading', 'core/paragraph']} />
               {/* <h3 className="portfolio-project__heading">Microhome</h3>
           <p className="portfolio-project__desc">
@@ -236,11 +290,15 @@ function EditComponent(props) {
         </p> */}
             </div>
             <div className="portfolio-project__img-box">
-              <div
-                className={`portfolio-project__img-group img-${numberOfImgs} img-${imagesDirection}`}
-              >
-                <ImagesSelected />
-              </div>
+              {+numberOfImgs === 1 && <ImagesSelected />}
+
+              {+numberOfImgs > 1 && (
+                <div
+                  className={`portfolio-project__img-group img-${numberOfImgs} img-${imagesDirection}`}
+                >
+                  <ImagesSelected />
+                </div>
+              )}
             </div>
           </>
         )}

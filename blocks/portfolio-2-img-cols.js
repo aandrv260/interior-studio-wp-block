@@ -239,11 +239,15 @@ function EditComponent(props) {
   const MultiImageCol = () => {
     return (
       <div className="portfolio-project__img-box">
-        <div
-          className={`portfolio-project__img-group portfolio-project__img-group--col portfolio-project__img-group--border-${imgCol2border} img-${numberOfCol2Imgs} img-${imagesCol2Direction}`}
-        >
-          <ImagesSelected />
-        </div>
+        {+numberOfCol2Imgs === 1 && <ImagesSelected />}
+
+        {+numberOfCol2Imgs > 1 && (
+          <div
+            className={`portfolio-project__img-group portfolio-project__img-group--col portfolio-project__img-group--border-${imgCol2border} img-${numberOfCol2Imgs} img-${imagesCol2Direction}`}
+          >
+            <ImagesSelected />
+          </div>
+        )}
       </div>
     );
   };

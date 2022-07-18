@@ -144,6 +144,10 @@ __webpack_require__.r(__webpack_exports__);
       type: 'string',
       default: '1'
     },
+    textBoxColor: {
+      type: 'string',
+      default: 'grey'
+    },
     imagesDirection: {
       type: 'string',
       default: 'row'
@@ -184,7 +188,8 @@ function EditComponent(props) {
       img1,
       img2,
       img3,
-      imagesDirection
+      imagesDirection,
+      textBoxColor
     }
   } = props;
 
@@ -291,6 +296,7 @@ function EditComponent(props) {
               url: ''
             }
           });
+          break;
 
         case '2':
           setAttributes({
@@ -299,9 +305,11 @@ function EditComponent(props) {
               url: ''
             }
           });
+          break;
 
         default:
           '';
+          break;
       }
 
       setAttributes({
@@ -358,33 +366,77 @@ function EditComponent(props) {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
       title: "Row options",
       initialOpen: true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImagesGroupOptions, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImagesControls, null)));
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+      label: "Background color",
+      help: "Select the background color of the textbox. By default, it is brown.",
+      options: [{
+        value: 'none',
+        label: 'None'
+      }, {
+        value: 'left',
+        label: 'Left'
+      }, {
+        value: 'right',
+        label: 'Right'
+      }],
+      value: border,
+      onChange: border => setAttributes({
+        border
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+      label: "Background color",
+      help: "Select the background color of the textbox. By default, it is brown.",
+      options: [{
+        value: 'grey',
+        label: 'Grey'
+      }, {
+        value: 'brown',
+        label: 'Brown'
+      }, {
+        value: 'black',
+        label: 'Black'
+      }],
+      value: textBoxColor,
+      onChange: color => setAttributes({
+        textBoxColor: color
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImagesGroupOptions, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImagesControls, null)));
   };
 
   const ImagesSelected = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, img1.id && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      style: {
+        height: '100%'
+      },
       className: "portfolio-project__img",
       src: img1.url,
       alt: "\u0421\u043D\u0438\u043C\u043A\u0430 \u043D\u0430 \u0441\u0445\u0435\u043C\u0430 1"
     }), img2.id && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      style: {
+        height: '100%'
+      },
       className: "portfolio-project__img",
       src: img2.url,
       alt: "\u0421\u043D\u0438\u043C\u043A\u0430 \u043D\u0430 \u0441\u0445\u0435\u043C\u0430 1"
     }), img3.id && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      style: {
+        height: '100%'
+      },
       className: "portfolio-project__img",
       src: img3.url,
       alt: "\u0421\u043D\u0438\u043C\u043A\u0430 \u043D\u0430 \u0441\u0445\u0435\u043C\u0430 1"
     }));
   };
 
+  console.log(+numberOfImgs);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControlsOptions, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "portfolio-project grid grid--2-cols"
+    className: `portfolio-project${border !== 'none' ? ' gap-12' : ''} grid grid--2-cols`
   }, imgSide === 'left' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "portfolio-project__img-box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `portfolio-project__img-box border-${border}`
+  }, +numberOfImgs === 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImagesSelected, null), +numberOfImgs > 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `portfolio-project__img-group img-${numberOfImgs} img-${imagesDirection}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImagesSelected, null))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "portfolio-project__text-box"
+    className: `portfolio-project__text-box portfolio-project__text-box--${textBoxColor}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
     allowedBlocks: ['core/heading', 'core/paragraph']
   }))), imgSide === 'right' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -393,7 +445,7 @@ function EditComponent(props) {
     allowedBlocks: ['core/heading', 'core/paragraph']
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "portfolio-project__img-box"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, +numberOfImgs === 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImagesSelected, null), +numberOfImgs > 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `portfolio-project__img-group img-${numberOfImgs} img-${imagesDirection}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ImagesSelected, null))))));
 }

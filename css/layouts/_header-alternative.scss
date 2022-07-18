@@ -6,7 +6,10 @@
   padding: 2.4rem 3rem;
 
   &__content-box {
-    @include transform-center(absolute);
+    // @include transform-center(absolute);
+    position: absolute;
+    bottom: -30%;
+    left: 0;
   }
 
   .heading--primary {

@@ -39,12 +39,10 @@
   }
 
   &__text-container {
-    @include flex(center, center, null);
-    align-items: stretch;
-    justify-content: stretch;
+    @include flex(null, center, null);
     flex-direction: column;
     height: 100%;
-    padding: 0 2.2rem;
+    padding: 1rem 2.2rem;
 
     background-color: #aaa;
   }

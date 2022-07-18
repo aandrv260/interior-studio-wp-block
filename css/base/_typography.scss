@@ -28,7 +28,21 @@ body {
   }
 
   &--primary-large {
-    font-size: 6.4rem !important;
+    // font-size: 6.4rem !important;
+
+    // START -> For testing only, edit later
+    font-size: 15rem !important;
+    text-transform: uppercase;
+    letter-spacing: 25px !important;
+    opacity: 0.2;
+    text-shadow: 2rem 2rem 4rem rgba(0, 0, 0, 0.7);
+
+    &::first-letter {
+      opacity: 1 !important;
+      font-weight: 700;
+      font-size: 70rem;
+    }
+    // END -> For testing only, edit later
   }
 
   &--primary-medium {

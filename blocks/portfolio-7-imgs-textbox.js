@@ -16,6 +16,8 @@ registerBlockType('custom-blocks/portfolio-7-imgs-textbox', {
   attributes: {
     imgsNumLeftCol: { type: 'string', default: '2' },
     imgsNumRightCol: { type: 'string', default: '2' },
+    hasTextbox: { type: 'string', default: 'yes' },
+    textBoxColor: { type: 'string', default: 'rgba(50, 39, 25, 0.9)' },
     img1: { type: 'object', default: defaultImgObj },
     img2: { type: 'object', default: defaultImgObj },
     img3: { type: 'object', default: defaultImgObj },
@@ -36,7 +38,19 @@ const Image = ({ image }) => (
 function EditComponent(props) {
   const {
     setAttributes,
-    attributes: { imgsNumLeftCol, imgsNumRightCol, img1, img2, img3, img4, img5, img6, img7 },
+    attributes: {
+      imgsNumLeftCol,
+      imgsNumRightCol,
+      img1,
+      img2,
+      img3,
+      img4,
+      img5,
+      img6,
+      img7,
+      textBoxColor,
+      hasTextbox,
+    },
   } = props;
 
   const allImages = [img1, img2, img3, img4, img5, img6, img7];
@@ -56,6 +70,7 @@ function EditComponent(props) {
     ],
 
     rightColImgOptions: [
+      { value: '1', label: '1' },
       { value: '2', label: '2' },
       { value: '4', label: '4' },
     ],
@@ -101,21 +116,29 @@ function EditComponent(props) {
   const CombinedCol = () => {
     return (
       <div className="portfolio-project__combined-box">
-        <div className="portfolio-project__text-box">
-          <InnerBlocks allowedBlocks={['core/heading', 'core/paragraph']} />
-        </div>
+        {hasTextbox === 'yes' && (
+          <div
+            className={`portfolio-project__text-box portfolio-project__text-box--${textBoxColor}`}
+          >
+            <InnerBlocks allowedBlocks={['core/heading', 'core/paragraph']} />
+          </div>
+        )}
 
         <div
           className={`portfolio-project__img-box grid grid--${
-            +imgsNumRightCol === 2 ? '1' : '2'
+            +imgsNumRightCol <= 2 ? '1' : '2'
           }-cols`}
         >
-          {+imgsNumRightCol === 2 ? (
+          {+imgsNumRightCol === 1 && <Image image={img4} />}
+
+          {+imgsNumRightCol === 2 && (
             <>
               <Image image={img4} />
               <Image image={img5} />
             </>
-          ) : (
+          )}
+
+          {+imgsNumRightCol === 4 && (
             <>
               <Image image={img4} />
               <Image image={img5} />
@@ -177,6 +200,33 @@ function EditComponent(props) {
         <PanelBody title="Right column" initialOpen>
           <PanelRow>
             <SelectControl
+              label="Background color"
+              help="Select the background color of the textbox. By default, it is brown."
+              options={[
+                { value: 'brown', label: 'Brown' },
+                { value: 'grey', label: 'Grey' },
+                { value: 'black', label: 'Black' },
+              ]}
+              value={textBoxColor}
+              onChange={color => setAttributes({ textBoxColor: color })}
+            />
+          </PanelRow>
+
+          <PanelRow>
+            <SelectControl
+              label="Block has textbox"
+              help="Select whether you want this block to have a textbox"
+              options={[
+                { value: 'yes', label: 'Yes' },
+                { value: 'no', label: 'No' },
+              ]}
+              value={hasTextbox}
+              onChange={value => setAttributes({ hasTextbox: value })}
+            />
+          </PanelRow>
+
+          <PanelRow>
+            <SelectControl
               label="Number of images"
               value={imgsNumRightCol}
               options={rightColImgOptions}
@@ -196,15 +246,17 @@ function EditComponent(props) {
             </MediaUploadCheck>
           </PanelRow>
 
-          <PanelRow>
-            <MediaUploadCheck>
-              <MediaUpload
-                value={img5.id}
-                onSelect={fileInfo => handleImgChange(fileInfo, 5)}
-                render={render}
-              />
-            </MediaUploadCheck>
-          </PanelRow>
+          {+imgsNumRightCol >= 2 && (
+            <PanelRow>
+              <MediaUploadCheck>
+                <MediaUpload
+                  value={img5.id}
+                  onSelect={fileInfo => handleImgChange(fileInfo, 5)}
+                  render={render}
+                />
+              </MediaUploadCheck>
+            </PanelRow>
+          )}
 
           {+imgsNumRightCol > 2 && (
             <>

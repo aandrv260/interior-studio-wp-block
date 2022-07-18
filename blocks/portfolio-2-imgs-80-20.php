@@ -3,13 +3,6 @@ $img1 = $attributes['img1'];
 $img2 = $attributes['img2'];
 $img3 = $attributes['img3'];
 $img4 = $attributes['img4'];
-
-function render_image($image)
-{
-    if ($image['id']) { ?>
-        <img class="portfolio-project__img" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-<?php }
-}
 ?>
 
 <div class="portfolio-project grid grid--80-20">

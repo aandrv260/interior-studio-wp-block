@@ -145,6 +145,14 @@ const defaultImgObj = {
       type: 'string',
       default: '2'
     },
+    hasTextbox: {
+      type: 'string',
+      default: 'yes'
+    },
+    textBoxColor: {
+      type: 'string',
+      default: 'rgba(50, 39, 25, 0.9)'
+    },
     img1: {
       type: 'object',
       default: defaultImgObj
@@ -201,7 +209,9 @@ function EditComponent(props) {
       img4,
       img5,
       img6,
-      img7
+      img7,
+      textBoxColor,
+      hasTextbox
     }
   } = props;
   const allImages = [img1, img2, img3, img4, img5, img6, img7];
@@ -228,6 +238,9 @@ function EditComponent(props) {
       label: '3'
     }],
     rightColImgOptions: [{
+      value: '1',
+      label: '1'
+    }, {
       value: '2',
       label: '2'
     }, {
@@ -315,17 +328,19 @@ function EditComponent(props) {
   const CombinedCol = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "portfolio-project__combined-box"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "portfolio-project__text-box"
+    }, hasTextbox === 'yes' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `portfolio-project__text-box portfolio-project__text-box--${textBoxColor}`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
       allowedBlocks: ['core/heading', 'core/paragraph']
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `portfolio-project__img-box grid grid--${+imgsNumRightCol === 2 ? '1' : '2'}-cols`
-    }, +imgsNumRightCol === 2 ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Image, {
+      className: `portfolio-project__img-box grid grid--${+imgsNumRightCol <= 2 ? '1' : '2'}-cols`
+    }, +imgsNumRightCol === 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Image, {
+      image: img4
+    }), +imgsNumRightCol === 2 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Image, {
       image: img4
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Image, {
       image: img5
-    })) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Image, {
+    })), +imgsNumRightCol === 4 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Image, {
       image: img4
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Image, {
       image: img5
@@ -362,6 +377,37 @@ function EditComponent(props) {
     title: "Right column",
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    label: "Background color",
+    help: "Select the background color of the textbox. By default, it is brown.",
+    options: [{
+      value: 'brown',
+      label: 'Brown'
+    }, {
+      value: 'grey',
+      label: 'Grey'
+    }, {
+      value: 'black',
+      label: 'Black'
+    }],
+    value: textBoxColor,
+    onChange: color => setAttributes({
+      textBoxColor: color
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    label: "Block has textbox",
+    help: "Select whether you want this block to have a textbox",
+    options: [{
+      value: 'yes',
+      label: 'Yes'
+    }, {
+      value: 'no',
+      label: 'No'
+    }],
+    value: hasTextbox,
+    onChange: value => setAttributes({
+      hasTextbox: value
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     label: "Number of images",
     value: imgsNumRightCol,
     options: rightColImgOptions,
@@ -372,7 +418,7 @@ function EditComponent(props) {
     value: img4.id,
     onSelect: fileInfo => handleImgChange(fileInfo, 4),
     render: render
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+  }))), +imgsNumRightCol >= 2 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
     value: img5.id,
     onSelect: fileInfo => handleImgChange(fileInfo, 5),
     render: render

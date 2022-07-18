@@ -85,11 +85,12 @@ function output_main_nav($isOnlyNav)
 
 function features()
 {
+    register_nav_menu('header_menu_location', 'Header Menu Location');
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails'); // Allow thumbnails on the normal posts
     add_image_size('portfolio_thumbnail', 325, 505, true); // Portfolio thumbnail
     add_theme_support('editor-styles');
-    add_editor_style(array('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet', 'build/style-index.css', 'build/style-index.css.map'));
+    add_editor_style(array('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet', 'build/style-index.css'));
 }
 
 add_action('after_setup_theme', 'features');
@@ -156,9 +157,28 @@ function render_image($image)
 function render_img_label($img_label)
 {
     if ($img_label) { ?>
-        <p className="portfolio-project__label"><?php echo $img_label; ?></p>
-<?php }
+        <p class="portfolio-project__label"><?php echo $img_label; ?></p>
+    <?php }
 }
+
+function render_img_box_2images($image1, $image2)
+{ ?>
+    <div class="portfolio-project__img-box">
+        <div class="portfolio-project__img-group img-2 img-column">
+            <?php
+            render_image($image1);
+            render_image($image2);
+            ?>
+        </div>
+    </div>
+<?php }
+
+function render_textbox($content)
+{ ?>
+    <div class="portfolio-project__text-box">
+        <?php echo $content; ?>
+    </div>
+<?php }
 
 class PlaceholderBlock
 {

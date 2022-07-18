@@ -1,11 +1,32 @@
 .portfolio-project {
   gap: 2px;
 
+  &:not(:last-child) {
+    margin-bottom: 3.2rem;
+  }
+
   &__img-box {
     &--full-width {
       img {
         width: 100%;
       }
+    }
+
+    &.border-none {
+      border: {
+        right: none;
+        left: none;
+      }
+    }
+
+    &.border-right {
+      padding-right: 3.2rem;
+      border-right: 3.5px solid $color-black;
+    }
+
+    &.border-left {
+      padding-left: 3.2rem;
+      border-left: 3.5px solid $color-black;
     }
   }
 
@@ -48,7 +69,11 @@
   }
 
   &__img-group.img-row {
-    flex-direction: row;
+    flex-direction: row !important;
+
+    img {
+      width: 50%;
+    }
   }
 
   &__img-group.img-column {
@@ -94,6 +119,19 @@
   &__text-box {
     padding: 4.8rem 2.4rem;
     background-color: rgba(50, 39, 25, 0.9);
+    color: #fff;
+
+    &--black {
+      background-color: #111;
+    }
+
+    &--brown {
+      background-color: rgba(50, 39, 25, 0.9);
+    }
+
+    &--grey {
+      background-color: #555;
+    }
   }
 
   &__text-box h1,
@@ -105,6 +143,7 @@
     text-align: center;
     font-size: 3.8rem;
     margin-bottom: 2.4rem;
+    text-transform: uppercase;
   }
 
   &__text-box p,
@@ -130,5 +169,7 @@
     color: #333;
     font-size: 2rem;
     letter-spacing: $letter-spacing-2;
+    text-transform: uppercase;
+    font-weight: 600;
   }
 }
